@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ECA Eventos Corporativos | Producción integral de eventos</title>
-  <meta name="description" content="ECA Eventos Corporativos. Producción integral de eventos empresariales e institucionales. Coordinación, logística, proveedores y ejecución profesional." />
+  <title>ECA Eventos Corporativos</title>
+  <meta name="description" content="Producción integral de eventos corporativos e institucionales en Neuquén." />
   <link rel="icon" href="LOGO.png" type="image/png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,29 +13,25 @@
 
   <style>
     :root{
-      --bg:#07080b;
-      --bg2:#0d1016;
-      --bg3:#11151c;
-      --paper:#f3f0e9;
-      --text:#f5f4ef;
-      --text-dark:#17181c;
-      --muted:#b7b4ad;
-      --muted-dark:#5d5850;
+      --bg:#0a0b0f;
+      --bg2:#111319;
+      --paper:#f5f3ee;
+      --text:#f6f5f1;
+      --text-dark:#181a1f;
+      --muted:#b9b6ae;
+      --muted-dark:#625d56;
       --gold:#d6a545;
       --gold2:#b67d25;
       --line:rgba(255,255,255,.08);
-      --line-dark:rgba(0,0,0,.08);
-      --max:1220px;
-      --shadow:0 24px 70px rgba(0,0,0,.32);
-      --shadow-soft:0 18px 42px rgba(0,0,0,.10);
-      --radius:28px;
+      --shadow:0 24px 60px rgba(0,0,0,.28);
+      --max:1240px;
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-family:Inter,system-ui,sans-serif;
       background:var(--bg);
       color:var(--text);
       -webkit-font-smoothing:antialiased;
@@ -49,16 +45,15 @@
     h1,h2,h3{margin:0 0 14px}
     h1{
       font-family:Manrope,Inter,sans-serif;
-      font-size:clamp(48px,7vw,90px);
+      font-size:clamp(48px,7vw,86px);
       line-height:.92;
       letter-spacing:-.05em;
-      max-width:10ch;
       text-wrap:balance;
     }
     h2{
       font-family:Manrope,Inter,sans-serif;
-      font-size:clamp(34px,4.2vw,60px);
-      line-height:.97;
+      font-size:clamp(34px,4.4vw,58px);
+      line-height:.98;
       letter-spacing:-.04em;
       text-wrap:balance;
     }
@@ -68,32 +63,14 @@
       letter-spacing:-.02em;
       text-wrap:balance;
     }
-    p{margin:0 0 14px;line-height:1.68}
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-size:.78rem;
-      font-weight:800;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-      color:var(--gold);
-      margin-bottom:14px;
-    }
-    .eyebrow::before{
-      content:"";
-      width:34px;
-      height:1px;
-      background:linear-gradient(90deg,var(--gold),transparent);
-    }
+    p{margin:0 0 14px;line-height:1.7}
 
     .topbar{
       position:sticky;
       top:0;
       z-index:50;
+      background:rgba(10,11,15,.78);
       backdrop-filter:blur(12px);
-      background:rgba(7,8,11,.76);
       border-bottom:1px solid rgba(255,255,255,.05);
     }
     .topbar-inner{
@@ -107,27 +84,22 @@
       display:flex;
       align-items:center;
       gap:14px;
-      min-width:0;
     }
-    .brand-badge{
-      width:48px;
-      height:48px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(180deg,#151922,#0d1016);
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:0 12px 30px rgba(0,0,0,.22);
-      overflow:hidden;
-      flex:0 0 auto;
-    }
-    .brand-badge img{
-      width:34px;
-      height:34px;
+    .brand img{
+      width:42px;
+      height:42px;
       object-fit:contain;
     }
-    .brand-title{font-weight:900;font-size:1rem;white-space:nowrap}
-    .brand-sub{font-size:.84rem;color:#b7b3aa;white-space:nowrap}
+    .brand strong{
+      display:block;
+      font-size:1rem;
+      font-weight:900;
+    }
+    .brand span{
+      display:block;
+      font-size:.84rem;
+      color:#bcb8af;
+    }
 
     .nav{
       display:flex;
@@ -145,215 +117,241 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
       padding:14px 20px;
       border-radius:999px;
       font-weight:900;
       color:#111;
       background:linear-gradient(90deg,var(--gold),var(--gold2));
-      box-shadow:0 12px 30px rgba(182,125,37,.30);
-      border:none;
-      transition:transform .18s ease, box-shadow .18s ease;
-      cursor:pointer;
-    }
-    .cta:hover{
-      transform:translateY(-1px);
-      box-shadow:0 16px 36px rgba(182,125,37,.38);
-    }
-    .cta-ghost{
-      background:transparent;
-      color:#f0eee8;
-      border:1px solid rgba(255,255,255,.15);
-      box-shadow:none;
-    }
-    .cta-ghost:hover{
-      background:rgba(255,255,255,.04);
-      box-shadow:none;
+      box-shadow:0 10px 26px rgba(182,125,37,.28);
     }
 
     .hero{
-      min-height:100svh;
+      min-height:92vh;
+      position:relative;
       display:grid;
-      align-items:center;
+      align-items:end;
       overflow:hidden;
       background:
-        radial-gradient(680px 420px at 76% 16%, rgba(214,165,69,.16), transparent 56%),
-        radial-gradient(540px 260px at 14% 0%, rgba(255,255,255,.05), transparent 48%),
-        linear-gradient(180deg,#0a0b0f 0%, #08090b 100%);
+        linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55)),
+        radial-gradient(700px 320px at 70% 20%, rgba(214,165,69,.18), transparent 60%),
+        url('hero-evento.webp') center/cover no-repeat,
+        linear-gradient(180deg,#12141b,#090a0d);
     }
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.02fr .98fr;
-      gap:46px;
-      align-items:center;
-      padding:62px 0 84px;
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.48));
     }
-    .hero-copy .lede{
-      max-width:58ch;
-      font-size:clamp(16px,1.45vw,19px);
-      color:#cbc8bf;
-      margin:18px 0 22px;
+    .hero-content{
+      position:relative;
+      z-index:1;
+      padding:110px 0 78px;
+      text-align:center;
     }
-    .hero-points{
-      display:grid;
-      gap:10px;
-      margin:0 0 26px;
-      padding:0;
-      list-style:none;
+    .hero-kicker{
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:#d8d4cb;
+      font-size:.82rem;
+      font-weight:800;
+      margin-bottom:16px;
     }
-    .hero-points li{
-      color:#e2ded6;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      font-weight:500;
+    .hero h1{
+      max-width:12ch;
+      margin:0 auto 18px;
     }
-    .hero-points li::before{
-      content:"•";
-      color:var(--gold);
-      font-weight:900;
-      line-height:1;
+    .hero p{
+      max-width:720px;
+      margin:0 auto 24px;
+      color:#ddd8cf;
+      font-size:1.08rem;
     }
     .hero-actions{
       display:flex;
       gap:12px;
+      justify-content:center;
       flex-wrap:wrap;
-      margin-top:8px;
     }
-    .hero-note{
-      margin-top:18px;
-      font-size:.95rem;
-      color:#9f9a91;
-    }
-
-    .hero-visual{
-      position:relative;
-      min-height:640px;
-      display:grid;
-      align-items:center;
-    }
-    .visual-shell{
-      position:relative;
-      width:min(620px,100%);
-      margin-left:auto;
-      border-radius:34px;
-      overflow:hidden;
-      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow);
-    }
-    .visual-shell::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.24));
-      z-index:1;
-      pointer-events:none;
-    }
-    .portrait{
-      width:100%;
-      min-height:620px;
-      object-fit:cover;
-      object-position:center;
-      background:#111;
+    .cta-ghost{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:none;
     }
 
-    .section-light{
+    .section-white{
       background:var(--paper);
       color:var(--text-dark);
+      padding:96px 0;
     }
-    .section-dark{
-      background:var(--bg2);
-      color:var(--text);
+    .intro-center{
+      text-align:center;
+      max-width:980px;
+      margin:0 auto;
     }
-    .section-black{
-      background:#050608;
-      color:var(--text);
+    .intro-center h2{
+      margin-bottom:14px;
     }
-    .section-pad{padding:96px 0}
-
-    .split-intro{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:42px;
-      align-items:center;
-    }
-    .split-intro h2{max-width:12ch}
-
-    .authority-card{
-      background:linear-gradient(180deg,#15181f,#0f1116);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:30px;
-      padding:30px;
-      box-shadow:var(--shadow);
-      max-width:530px;
-    }
-    .authority-card .kicker{
-      font-size:.82rem;
-      color:var(--gold);
-      font-weight:800;
+    .intro-mini{
       text-transform:uppercase;
-      letter-spacing:.14em;
-      margin-bottom:12px;
+      letter-spacing:.18em;
+      font-size:.9rem;
+      color:#70695f;
+      font-weight:800;
+      margin-bottom:18px;
     }
-    .quote-big{
+    .intro-center p{
+      max-width:900px;
+      margin:0 auto 14px;
+      color:#645f58;
+      font-size:1.05rem;
+    }
+
+    .categories-band{
+      background:#121316;
+      padding:44px 0;
+    }
+    .categories-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:22px;
+    }
+    .category-box{
+      aspect-ratio:1.12/1;
+      border-radius:0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,0)),
+        linear-gradient(135deg, #b9357b, #7d1fd0 70%, #5a21c7);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      color:#fff;
       font-family:Manrope,Inter,sans-serif;
-      font-size:clamp(30px,3.2vw,48px);
+      font-size:clamp(22px,2vw,34px);
       line-height:1.02;
       letter-spacing:-.03em;
-      color:#fff;
-      margin-bottom:14px;
-      max-width:11ch;
+      font-weight:800;
     }
-    .authority-card p:last-child{
-      color:#d4d1c9;
-      max-width:42ch;
+
+    .services-section{
+      background:var(--paper);
+      color:var(--text-dark);
+      padding:70px 0 90px;
+    }
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:24px;
+    }
+    .service-card{
+      background:#ece8e3;
+      border-radius:28px;
+      padding:28px;
+      box-shadow:0 10px 30px rgba(0,0,0,.05);
+    }
+    .service-image{
+      width:100%;
+      aspect-ratio:1.12/0.78;
+      border-radius:0;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.35)),
+        linear-gradient(135deg,#2e3150,#151822);
+      margin-bottom:22px;
+    }
+    .service-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .service-card h3{
+      font-size:clamp(26px,2vw,34px);
+      margin-bottom:8px;
+    }
+    .service-sub{
+      font-style:italic;
+      color:#3e3a34;
+      margin-bottom:16px;
+      display:block;
+    }
+    .service-card p{
+      color:#58534c;
       margin:0;
     }
 
-    .kpi-strip{
+    .gallery-section{
+      background:var(--paper);
+      padding:0 0 80px;
+    }
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+    }
+    .gallery-item{
+      min-height:240px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.28)),
+        linear-gradient(135deg,#2d3143,#181b23);
+      overflow:hidden;
+    }
+    .gallery-item img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .authority-section{
+      background:#050608;
+      color:#fff;
+      padding:96px 0;
+    }
+    .authority-head{
+      text-align:center;
+      max-width:940px;
+      margin:0 auto 34px;
+    }
+    .authority-head .mini{
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:.82rem;
+      color:var(--gold);
+      font-weight:800;
+      margin-bottom:14px;
+    }
+    .kpi-grid{
       display:grid;
       grid-template-columns:repeat(4,minmax(0,1fr));
       gap:18px;
-      margin-top:34px;
+      margin-bottom:34px;
     }
     .kpi{
-      padding:28px 22px;
-      border-radius:24px;
-      background:#11151c;
+      background:rgba(255,255,255,.03);
       border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow);
+      border-radius:24px;
+      padding:28px 22px;
       text-align:center;
     }
     .kpi strong{
       display:block;
       font-family:Manrope,Inter,sans-serif;
       font-size:clamp(28px,3vw,42px);
-      color:#fff;
-      letter-spacing:-.03em;
       margin-bottom:8px;
+      letter-spacing:-.03em;
     }
     .kpi span{
-      color:#d7d3cb;
+      color:#d2cec6;
       font-weight:600;
-      line-height:1.5;
+      line-height:1.55;
       display:block;
     }
 
-    .clients-wrap{
-      margin-top:38px;
-      padding-top:24px;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
-    .clients-label{
-      text-align:center;
-      color:#d3cec5;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:.82rem;
-      margin-bottom:20px;
-    }
     .logo-marquee{
       overflow:hidden;
       position:relative;
@@ -376,139 +374,10 @@
       text-align:center;
       font-weight:800;
       white-space:nowrap;
-      box-shadow:0 10px 24px rgba(0,0,0,.18);
     }
     @keyframes scrollLogos{
       from{transform:translateX(0)}
       to{transform:translateX(-50%)}
-    }
-
-    .services-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:18px;
-      margin-top:28px;
-    }
-    .service-card{
-      background:#fff;
-      border:1px solid rgba(0,0,0,.07);
-      border-radius:24px;
-      padding:24px;
-      box-shadow:var(--shadow-soft);
-    }
-    .service-card .tag{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:8px 12px;
-      border-radius:999px;
-      font-weight:800;
-      font-size:.76rem;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      background:#f5e4c0;
-      color:#8b5b18;
-      margin-bottom:14px;
-    }
-    .service-card h3{
-      margin-bottom:10px;
-      max-width:12ch;
-    }
-    .service-card p{
-      color:#5d5952;
-      margin-bottom:12px;
-    }
-    .service-card ul{
-      padding-left:18px;
-      margin:0;
-      color:#4e4942;
-    }
-    .service-card li{margin-bottom:7px}
-
-    .method-panel{
-      max-width:980px;
-      margin:0 auto;
-      border-radius:30px;
-      padding:34px;
-      background:linear-gradient(180deg,#161a22,#0f1116);
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow);
-    }
-    .method-panel > p{
-      color:#d7d4cc;
-      max-width:62ch;
-    }
-    .steps{
-      display:grid;
-      gap:14px;
-      margin-top:22px;
-    }
-    .step{
-      display:grid;
-      grid-template-columns:auto 1fr;
-      gap:14px;
-      align-items:flex-start;
-      padding:18px;
-      border-radius:20px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
-    }
-    .step-num{
-      width:42px;
-      height:42px;
-      border-radius:999px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(180deg,var(--gold),var(--gold2));
-      color:#161616;
-      font-weight:900;
-      flex:0 0 auto;
-    }
-
-    .section-title-center{
-      max-width:920px;
-      margin:0 auto 22px;
-      text-align:center;
-    }
-    .section-title-center .eyebrow{
-      justify-content:center;
-    }
-    .section-title-center h2{
-      max-width:14ch;
-      margin-inline:auto;
-    }
-
-    .events-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:18px;
-      margin-top:28px;
-    }
-    .event-card{
-      border-radius:24px;
-      overflow:hidden;
-      background:#12141a;
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow);
-    }
-    .event-card img{
-      width:100%;
-      aspect-ratio:4/3;
-      object-fit:cover;
-    }
-    .event-card .caption{
-      padding:16px 18px 20px;
-      color:#e8e4dc;
-    }
-    .event-card .caption strong{
-      display:block;
-      font-size:1.05rem;
-      margin-bottom:6px;
-    }
-    .event-card .caption span{
-      color:#bdb8af;
-      line-height:1.55;
-      display:block;
     }
 
     .cta-band{
@@ -517,16 +386,19 @@
         linear-gradient(180deg,#0e1015,#0a0b0d);
       border-top:1px solid rgba(255,255,255,.06);
       border-bottom:1px solid rgba(255,255,255,.06);
+      padding:80px 0;
     }
     .cta-box{
       display:grid;
-      grid-template-columns:1.02fr .98fr;
-      gap:28px;
+      grid-template-columns:1.05fr .95fr;
+      gap:30px;
       align-items:center;
-      padding:74px 0;
     }
     .cta-copy h2{max-width:12ch}
-    .cta-copy p{max-width:54ch}
+    .cta-copy p{
+      max-width:54ch;
+      color:#cbc7be;
+    }
 
     .cta-panel{
       background:rgba(255,255,255,.04);
@@ -562,10 +434,6 @@
       gap:24px;
       padding:34px 0;
     }
-    .footer-grid h4{
-      margin:0 0 12px;
-      font-size:1rem;
-    }
     .footer-logo{
       display:flex;
       align-items:center;
@@ -577,7 +445,6 @@
       height:34px;
       object-fit:contain;
     }
-    .footer-brand{max-width:40ch}
     .legal{
       padding:0 0 28px;
       color:#918d84;
@@ -585,25 +452,23 @@
     }
 
     @media (max-width:1100px){
-      .hero-grid,.split-intro,.cta-box{grid-template-columns:1fr}
-      .services-grid,.events-grid{grid-template-columns:1fr 1fr}
-      .kpi-strip{grid-template-columns:1fr 1fr}
-      .visual-shell,.cta-panel{margin-inline:auto}
+      .hero-content{padding:100px 0 70px}
+      .categories-grid,.services-grid,.kpi-grid{grid-template-columns:1fr 1fr}
+      .cta-box{grid-template-columns:1fr}
+      .cta-panel{margin-inline:auto}
     }
     @media (max-width:860px){
       .nav a:not(.cta){display:none}
+      .gallery-grid{grid-template-columns:1fr 1fr}
       .footer-grid{grid-template-columns:1fr}
-      .hero{min-height:auto}
-      .portrait{min-height:420px}
     }
     @media (max-width:700px){
       .container{padding:0 18px}
       .topbar-inner{height:72px}
-      .brand-sub{display:none}
-      .section-pad{padding:76px 0}
-      .services-grid,.events-grid,.kpi-strip{grid-template-columns:1fr}
-      .hero-grid{padding:34px 0 56px}
-      h1{max-width:none}
+      .brand span{display:none}
+      .section-white,.services-section,.authority-section,.cta-band{padding:76px 0}
+      .categories-grid,.services-grid,.gallery-grid,.kpi-grid{grid-template-columns:1fr}
+      .hero h1{max-width:none}
       .logo-chip{min-width:180px}
     }
   </style>
@@ -613,20 +478,18 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="#inicio" aria-label="Inicio">
-        <span class="brand-badge">
-          <img src="LOGO.png" alt="ECA Eventos Corporativos" />
-        </span>
-        <span>
-          <div class="brand-title">ECA Eventos Corporativos</div>
-          <div class="brand-sub">Producción integral de eventos</div>
-        </span>
+        <img src="LOGO.png" alt="ECA Eventos Corporativos">
+        <div>
+          <strong>ECA Eventos Corporativos</strong>
+          <span>Producción integral de eventos</span>
+        </div>
       </a>
 
       <nav class="nav" aria-label="Principal">
+        <a href="#espacios">Espacios</a>
         <a href="#servicios">Servicios</a>
-        <a href="#metodo">Cómo trabajamos</a>
-        <a href="#eventos">Eventos</a>
         <a href="#autoridad">Autoridad</a>
+        <a href="#contacto">Contacto</a>
         <a class="cta" href="https://wa.me/542993323042" target="_blank" rel="noopener">Solicitar propuesta</a>
       </nav>
     </div>
@@ -634,64 +497,93 @@
 
   <main>
     <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Productora de eventos corporativos</span>
-          <h1>Eventos empresariales con presencia, dirección y ejecución profesional.</h1>
-          <p class="lede">ECA desarrolla eventos corporativos e institucionales con una lógica integral: producción, coordinación operativa, proveedores, logística y supervisión general para que cada instancia se viva con orden, imagen y resultados.</p>
-
-          <ul class="hero-points">
-            <li>Producción integral de eventos empresariales de distinta magnitud.</li>
-            <li>Coordinación operativa y dirección general del evento.</li>
-            <li>Una propuesta clara para empresas que necesitan hacer las cosas bien.</li>
-          </ul>
-
-          <div class="hero-actions">
-            <a class="cta" href="https://wa.me/542993323042" target="_blank" rel="noopener">Solicitar propuesta por WhatsApp</a>
-            <a class="cta cta-ghost" href="#autoridad">Ver trayectoria</a>
-          </div>
-
-          <p class="hero-note">Neuquén Capital · Eventos corporativos, institucionales y empresariales</p>
-        </div>
-
-        <div class="hero-visual" aria-hidden="true">
-          <div class="visual-shell">
-            <img class="portrait" src="hero-evento.webp" alt="Evento corporativo ECA" />
-          </div>
+      <div class="container hero-content">
+        <div class="hero-kicker">Producción de eventos corporativos e institucionales</div>
+        <h1>Tu evento brillará con una producción bien resuelta.</h1>
+        <p>Organizamos eventos empresariales de distinta magnitud, coordinando proveedores, logística, montaje y ejecución general para que cada encuentro exprese orden, presencia y profesionalismo.</p>
+        <div class="hero-actions">
+          <a class="cta" href="https://wa.me/542993323042" target="_blank" rel="noopener">Pedir propuesta</a>
+          <a class="cta cta-ghost" href="#autoridad">Ver trayectoria</a>
         </div>
       </div>
     </section>
 
-    <section class="section-light section-pad">
-      <div class="container split-intro">
-        <div>
-          <span class="eyebrow" style="color:#9c611f">Nuestra mirada</span>
-          <h2>No improvisamos eventos. Diseñamos experiencias corporativas bien resueltas.</h2>
-        </div>
-
-        <div class="authority-card">
-          <div class="kicker">Idea central</div>
-          <div class="quote-big">Menos desorden. Más dirección.</div>
-          <p>Una empresa no necesita solo contratar servicios. Necesita una estructura clara, criterio de producción y una coordinación integral que garantice que el evento funcione de principio a fin.</p>
-        </div>
+    <section class="section-white">
+      <div class="container intro-center">
+        <h2>Tu evento brillará</h2>
+        <div class="intro-mini">Eventos empresariales, institucionales y encuentros corporativos</div>
+        <p>ECA brinda producción integral para eventos empresariales, institucionales y organizacionales, articulando logística, proveedores, ambientación, equipamiento y ejecución general.</p>
+        <p>Nuestro objetivo es que cada evento funcione con orden, presencia y una experiencia alineada a la imagen que la organización necesita transmitir.</p>
       </div>
     </section>
 
-    <section class="section-black section-pad" id="autoridad">
+    <section class="categories-band" id="espacios">
+      <div class="container categories-grid">
+        <div class="category-box">Producción<br>Integral</div>
+        <div class="category-box">Logística<br>y Montaje</div>
+        <div class="category-box">Eventos<br>Empresariales</div>
+        <div class="category-box">Salas y<br>Formatos</div>
+      </div>
+    </section>
+
+    <section class="services-section" id="servicios">
+      <div class="container services-grid">
+        <article class="service-card">
+          <div class="service-image"><img src="servicio-1.webp" alt="Salón"></div>
+          <h3>Salón</h3>
+          <span class="service-sub">Elegante y acogedor</span>
+          <p>Espacios pensados para congresos, presentaciones, capacitaciones, recepciones empresariales y encuentros institucionales con una puesta profesional.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-image"><img src="servicio-2.webp" alt="Banquetes"></div>
+          <h3>Banquetes</h3>
+          <span class="service-sub">Una propuesta cuidada</span>
+          <p>Opciones gastronómicas y servicios complementarios pensados para acompañar la experiencia del evento con coherencia y nivel.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-image"><img src="servicio-3.webp" alt="Equipamiento"></div>
+          <h3>Equipamiento</h3>
+          <span class="service-sub">Tecnología al servicio del evento</span>
+          <p>Coordinación de equipamiento técnico y recursos audiovisuales para que la ejecución se sostenga con calidad y profesionalismo.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-image"><img src="servicio-4.webp" alt="Formatos"></div>
+          <h3>Formatos</h3>
+          <span class="service-sub">Cada evento a medida</span>
+          <p>Diseñamos propuestas adaptadas al tipo de encuentro, cantidad de invitados, objetivo institucional y dinámica operativa.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <div class="container gallery-grid">
+        <div class="gallery-item"><img src="galeria-1.webp" alt="Evento corporativo 1"></div>
+        <div class="gallery-item"><img src="galeria-2.webp" alt="Evento corporativo 2"></div>
+        <div class="gallery-item"><img src="galeria-3.webp" alt="Evento corporativo 3"></div>
+        <div class="gallery-item"><img src="galeria-4.webp" alt="Evento corporativo 4"></div>
+        <div class="gallery-item"><img src="galeria-5.webp" alt="Evento corporativo 5"></div>
+        <div class="gallery-item"><img src="galeria-6.webp" alt="Evento corporativo 6"></div>
+      </div>
+    </section>
+
+    <section class="authority-section" id="autoridad">
       <div class="container">
-        <div class="section-title-center">
-          <span class="eyebrow">Alcance y trayectoria</span>
+        <div class="authority-head">
+          <div class="mini">Alcance y trayectoria</div>
           <h2>Empresas e instituciones que ya confiaron en nuestro trabajo.</h2>
         </div>
 
-        <div class="kpi-strip">
+        <div class="kpi-grid">
           <div class="kpi">
             <strong>13+</strong>
             <span>Empresas e instituciones mencionadas entre clientes y organizaciones atendidas.</span>
           </div>
           <div class="kpi">
             <strong>Integral</strong>
-            <span>Producción, logística y ejecución coordinadas bajo una misma dirección.</span>
+            <span>Producción, logística y ejecución bajo una misma dirección profesional.</span>
           </div>
           <div class="kpi">
             <strong>Corporativo</strong>
@@ -699,184 +591,59 @@
           </div>
           <div class="kpi">
             <strong>Neuquén</strong>
-            <span>Base local con enfoque profesional para empresas de la región.</span>
+            <span>Base local con foco en empresas, entidades y organizaciones de la región.</span>
           </div>
         </div>
 
-        <div class="clients-wrap">
-          <div class="clients-label">Empresas, entidades e instituciones</div>
+        <div class="logo-marquee">
+          <div class="logo-track">
+            <div class="logo-chip">Toyota Nippon</div>
+            <div class="logo-chip">Iveco</div>
+            <div class="logo-chip">QM</div>
+            <div class="logo-chip">IPH</div>
+            <div class="logo-chip">Centro Norpatagónico</div>
+            <div class="logo-chip">Trace Group</div>
+            <div class="logo-chip">Ánel</div>
+            <div class="logo-chip">Asoc. Neuquina de Empleados Legislativos</div>
+            <div class="logo-chip">Asoc. Pilotos de Enduro y Superduro</div>
+            <div class="logo-chip">ATE Cipolletti</div>
+            <div class="logo-chip">Banco Credicoop Cooperativo Ltdo</div>
+            <div class="logo-chip">Benteveo Producciones</div>
+            <div class="logo-chip">Casa Magnoni SRL</div>
 
-          <div class="logo-marquee">
-            <div class="logo-track">
-              <div class="logo-chip">Toyota Nippon</div>
-              <div class="logo-chip">Iveco</div>
-              <div class="logo-chip">QM</div>
-              <div class="logo-chip">IPH</div>
-              <div class="logo-chip">Centro Norpatagónico</div>
-              <div class="logo-chip">Trace Group</div>
-              <div class="logo-chip">Ánel</div>
-              <div class="logo-chip">Asoc. Neuquina de Empleados Legislativos</div>
-              <div class="logo-chip">Asoc. Pilotos de Enduro y Superduro</div>
-              <div class="logo-chip">ATE Cipolletti</div>
-              <div class="logo-chip">Banco Credicoop Cooperativo Ltdo</div>
-              <div class="logo-chip">Benteveo Producciones</div>
-              <div class="logo-chip">Casa Magnoni SRL</div>
-
-              <div class="logo-chip">Toyota Nippon</div>
-              <div class="logo-chip">Iveco</div>
-              <div class="logo-chip">QM</div>
-              <div class="logo-chip">IPH</div>
-              <div class="logo-chip">Centro Norpatagónico</div>
-              <div class="logo-chip">Trace Group</div>
-              <div class="logo-chip">Ánel</div>
-              <div class="logo-chip">Asoc. Neuquina de Empleados Legislativos</div>
-              <div class="logo-chip">Asoc. Pilotos de Enduro y Superduro</div>
-              <div class="logo-chip">ATE Cipolletti</div>
-              <div class="logo-chip">Banco Credicoop Cooperativo Ltdo</div>
-              <div class="logo-chip">Benteveo Producciones</div>
-              <div class="logo-chip">Casa Magnoni SRL</div>
-            </div>
+            <div class="logo-chip">Toyota Nippon</div>
+            <div class="logo-chip">Iveco</div>
+            <div class="logo-chip">QM</div>
+            <div class="logo-chip">IPH</div>
+            <div class="logo-chip">Centro Norpatagónico</div>
+            <div class="logo-chip">Trace Group</div>
+            <div class="logo-chip">Ánel</div>
+            <div class="logo-chip">Asoc. Neuquina de Empleados Legislativos</div>
+            <div class="logo-chip">Asoc. Pilotos de Enduro y Superduro</div>
+            <div class="logo-chip">ATE Cipolletti</div>
+            <div class="logo-chip">Banco Credicoop Cooperativo Ltdo</div>
+            <div class="logo-chip">Benteveo Producciones</div>
+            <div class="logo-chip">Casa Magnoni SRL</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section-light section-pad" id="servicios">
-      <div class="container">
-        <div style="max-width:980px;margin:0 auto 34px;">
-          <span class="eyebrow" style="color:#9c611f">Servicios</span>
-          <h2>Resolvemos el evento con una lógica ejecutiva e integral.</h2>
-          <p style="max-width:720px;color:#5d5850;">Cada proyecto se trabaja desde la planificación hasta la ejecución, articulando recursos, proveedores, tiempos y experiencia general para que el evento exprese la imagen que la empresa necesita transmitir.</p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <span class="tag">Producción</span>
-            <h3>Producción integral del evento</h3>
-            <p>Planificación general, estructura del evento y armado de propuesta alineada al objetivo de la empresa.</p>
-            <ul>
-              <li>Definición general</li>
-              <li>Armado de propuesta</li>
-              <li>Supervisión integral</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <span class="tag">Operación</span>
-            <h3>Coordinación de proveedores y logística</h3>
-            <p>Articulación de recursos, cronograma, montaje y operación general para evitar improvisaciones.</p>
-            <ul>
-              <li>Contrataciones</li>
-              <li>Cronograma y montaje</li>
-              <li>Seguimiento operativo</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <span class="tag">Ejecución</span>
-            <h3>Dirección y ejecución del evento</h3>
-            <p>Presencia real en la ejecución para sostener ritmo, orden y resolución en tiempo real.</p>
-            <ul>
-              <li>Control en sitio</li>
-              <li>Resolución de contingencias</li>
-              <li>Cierre ordenado</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-dark section-pad" id="metodo">
-      <div class="container">
-        <div class="method-panel">
-          <span class="eyebrow">Cómo trabajamos</span>
-          <h2>Una producción clara, sostenida en el detalle y orientada al resultado.</h2>
-          <p>No trabajamos desde la improvisación. Nuestro enfoque es construir eventos corporativos con dirección, presencia y estructura, para que cada instancia suceda con coherencia profesional.</p>
-
-          <div class="steps">
-            <div class="step">
-              <div class="step-num">1</div>
-              <div>
-                <strong>Definimos el objetivo del evento</strong>
-                <p class="muted">Qué necesita comunicar la empresa y qué experiencia quiere construir.</p>
-              </div>
-            </div>
-
-            <div class="step">
-              <div class="step-num">2</div>
-              <div>
-                <strong>Ordenamos recursos y operación</strong>
-                <p class="muted">Proveedores, tiempos, montaje, logística y estructura general.</p>
-              </div>
-            </div>
-
-            <div class="step">
-              <div class="step-num">3</div>
-              <div>
-                <strong>Ejecutamos con seguimiento real</strong>
-                <p class="muted">Supervisión del evento para garantizar orden, imagen y resultado final.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-light section-pad" id="eventos">
-      <div class="container">
-        <div style="max-width:980px;margin:0 auto 24px;">
-          <span class="eyebrow" style="color:#9c611f">Tipos de eventos</span>
-          <h2>Trabajamos eventos corporativos e institucionales de distinta escala.</h2>
-          <p style="max-width:740px;color:#5d5850;">Adaptamos la producción, la coordinación y la ejecución a la magnitud del encuentro, cuidando siempre presencia, orden e impacto.</p>
-        </div>
-
-        <div class="events-grid">
-          <div class="event-card">
-            <img src="evento-1.webp" alt="Montaje de evento corporativo" />
-            <div class="caption">
-              <strong>Montaje y ambientación</strong>
-              <span>Espacios preparados para transmitir imagen, orden y experiencia profesional.</span>
-            </div>
-          </div>
-
-          <div class="event-card">
-            <img src="evento-2.webp" alt="Evento institucional" />
-            <div class="caption">
-              <strong>Eventos empresariales</strong>
-              <span>Encuentros corporativos e institucionales de distinta magnitud.</span>
-            </div>
-          </div>
-
-          <div class="event-card">
-            <img src="evento-3.webp" alt="Producción y ejecución" />
-            <div class="caption">
-              <strong>Producción y ejecución</strong>
-              <span>Coordinación integral para que todo suceda con coherencia y presencia.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-band">
+    <section class="cta-band" id="contacto">
       <div class="container cta-box">
         <div class="cta-copy">
-          <span class="eyebrow">Contacto</span>
-          <h2>Si necesitás una productora que ordene el evento de verdad, conversemos.</h2>
-          <p class="muted">Podés escribirnos para contarnos qué tipo de evento necesitás y te acercamos una propuesta clara, profesional y alineada a tu organización.</p>
+          <h2>Pedí tu propuesta para un evento bien organizado.</h2>
+          <p>Si necesitás una productora que ordene el evento de verdad, escribinos. Te acercamos una propuesta clara, profesional y alineada a tu organización.</p>
         </div>
 
         <div class="cta-panel">
-          <h3>Solicitar propuesta</h3>
-          <p class="muted">Podés contactarnos por estas vías:</p>
-
+          <h3>Contacto</h3>
           <div class="contact-list">
             <div class="contact-item"><strong>WhatsApp:</strong> 2993 32-3042</div>
             <div class="contact-item"><strong>Teléfono:</strong> 299 5244039</div>
             <div class="contact-item"><strong>Email:</strong> info@aliciaojedaeventos.ar</div>
             <div class="contact-item"><strong>Ubicación:</strong> Neuquén Capital, Argentina</div>
           </div>
-
           <a class="cta" href="https://wa.me/542993323042" target="_blank" rel="noopener">Hablar por WhatsApp</a>
         </div>
       </div>
@@ -885,21 +652,20 @@
 
   <footer>
     <div class="container footer-grid">
-      <div class="footer-brand">
+      <div>
         <div class="footer-logo">
-          <img src="LOGO.png" alt="ECA Eventos Corporativos" />
+          <img src="LOGO.png" alt="ECA Eventos Corporativos">
           <strong>ECA Eventos Corporativos</strong>
         </div>
-        <p>Producción integral de eventos empresariales e institucionales. Coordinación, logística, proveedores y ejecución profesional para organizaciones que necesitan presencia, orden y resultados.</p>
+        <p>Producción integral de eventos empresariales e institucionales. Coordinación, logística, proveedores y ejecución profesional.</p>
       </div>
 
       <div>
         <h4>Secciones</h4>
         <p><a href="#inicio">Inicio</a></p>
-        <p><a href="#autoridad">Autoridad</a></p>
+        <p><a href="#espacios">Espacios</a></p>
         <p><a href="#servicios">Servicios</a></p>
-        <p><a href="#metodo">Cómo trabajamos</a></p>
-        <p><a href="#eventos">Eventos</a></p>
+        <p><a href="#autoridad">Autoridad</a></p>
       </div>
 
       <div>
@@ -907,7 +673,6 @@
         <p>2993 32-3042</p>
         <p>299 5244039</p>
         <p>info@aliciaojedaeventos.ar</p>
-        <p>Neuquén Capital</p>
       </div>
     </div>
 
@@ -915,6 +680,5 @@
       © 2026 ECA Eventos Corporativos
     </div>
   </footer>
-
 </body>
 </html>
