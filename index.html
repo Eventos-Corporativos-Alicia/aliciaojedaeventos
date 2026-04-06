@@ -215,7 +215,7 @@
     }
     .hero p{
       max-width:850px;
-      margin:0 auto 26px;
+      margin:0 auto 24px;
       color:#e4ddd1;
       font-size:1.08rem;
     }
@@ -369,8 +369,7 @@
       position:absolute;
       inset:0;
       z-index:1;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.05) 10%, rgba(0,0,0,.78) 100%);
+      background:linear-gradient(180deg, rgba(0,0,0,.05) 10%, rgba(0,0,0,.78) 100%);
     }
     .service-card:hover img{
       transform:scale(1.04);
@@ -407,12 +406,12 @@
       background:rgba(255,255,255,.13);
     }
 
-    .authority-head{
+    .testimonials-head{
       text-align:center;
       max-width:920px;
       margin:0 auto 34px;
     }
-    .authority-head p{
+    .testimonials-head p{
       color:#d2ccc0;
       max-width:760px;
       margin:0 auto;
@@ -450,6 +449,7 @@
       position:relative;
       mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
       -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      margin-bottom:34px;
     }
     .logo-track{
       display:flex;
@@ -471,6 +471,109 @@
     @keyframes scrollLogos{
       from{transform:translateX(0)}
       to{transform:translateX(-50%)}
+    }
+
+    .testimonial-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+      margin-top:18px;
+    }
+    .testimonial-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      padding:26px;
+      box-shadow:0 16px 35px rgba(0,0,0,.16);
+    }
+    .testimonial-card p{
+      color:#ece6dc;
+      margin-bottom:16px;
+    }
+    .testimonial-card strong{
+      display:block;
+      color:#fff;
+      font-size:1rem;
+    }
+    .testimonial-card span{
+      color:#c8c1b5;
+      font-size:.92rem;
+    }
+
+    .cases-slider{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .cases-track-wrap{
+      overflow:hidden;
+      width:100%;
+    }
+    .cases-track{
+      display:flex;
+      gap:22px;
+      transition:transform .35s ease;
+      will-change:transform;
+    }
+    .case-card{
+      min-width:calc(33.333% - 15px);
+      position:relative;
+      border-radius:28px;
+      overflow:hidden;
+      min-height:430px;
+      box-shadow:0 18px 40px rgba(0,0,0,.12);
+      flex-shrink:0;
+    }
+    .case-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .case-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.72));
+    }
+    .case-overlay{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:2;
+      padding:24px;
+      color:#fff;
+    }
+    .case-overlay span{
+      display:inline-block;
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-weight:800;
+      color:#e0d6c3;
+      margin-bottom:10px;
+    }
+    .case-overlay h3{
+      font-size:clamp(26px,2vw,36px);
+      margin-bottom:8px;
+    }
+    .case-overlay p{
+      color:#ece6db;
+      margin:0;
+    }
+    .cases-arrow{
+      width:48px;
+      height:48px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.08);
+      background:#fff;
+      color:#111;
+      font-size:2rem;
+      line-height:1;
+      cursor:pointer;
+      box-shadow:0 10px 25px rgba(0,0,0,.08);
+      flex-shrink:0;
     }
 
     .cta-band{
@@ -512,6 +615,57 @@
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.08);
       color:#ece8df;
+    }
+
+    .steps-band{
+      background:
+        radial-gradient(500px 240px at 20% 50%, rgba(214,165,69,.14), transparent 60%),
+        linear-gradient(180deg,#0f1218,#090a0d);
+      color:#fff;
+      padding:92px 0;
+    }
+    .steps-head{
+      text-align:center;
+      max-width:920px;
+      margin:0 auto 36px;
+    }
+    .steps-head p{
+      color:#d2ccc0;
+      max-width:760px;
+      margin:0 auto;
+    }
+    .steps-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+      margin-top:36px;
+    }
+    .step-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+    .step-number{
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(90deg,var(--gold),var(--gold-2));
+      color:#111;
+      font-weight:900;
+      margin-bottom:16px;
+    }
+    .step-card h3{
+      font-size:1.5rem;
+      margin-bottom:10px;
+    }
+    .step-card p{
+      color:#d8d1c6;
+      margin:0;
     }
 
     footer{
@@ -556,8 +710,13 @@
       padding:22px;
       background:rgba(3,4,7,.72);
       backdrop-filter:blur(12px);
+      opacity:0;
+      transition:opacity .28s ease;
     }
-    .modal.is-open{display:flex}
+    .modal.is-open{
+      display:flex;
+      opacity:1;
+    }
     .modal-dialog{
       width:min(1120px,100%);
       max-height:min(90vh,900px);
@@ -567,6 +726,13 @@
       border-radius:30px;
       box-shadow:0 30px 70px rgba(0,0,0,.38);
       position:relative;
+      transform:translateY(24px) scale(.98);
+      opacity:0;
+      transition:transform .32s ease, opacity .32s ease;
+    }
+    .modal.is-open .modal-dialog{
+      transform:translateY(0) scale(1);
+      opacity:1;
     }
     .modal-close{
       position:absolute;
@@ -599,7 +765,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.42));
+      background:linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.48));
     }
     .modal-hero{
       position:absolute;
@@ -649,25 +815,24 @@
       color:#514b43;
       margin-bottom:18px;
     }
-    .mini-btn{
-      padding:13px 18px;
-      border-radius:999px;
-      font-weight:900;
-      color:#111;
-      background:linear-gradient(90deg,var(--gold),var(--gold-2));
-      box-shadow:0 10px 24px rgba(183,125,36,.22);
-    }
 
     @media (max-width:1150px){
       .services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .pain-grid{grid-template-columns:1fr 1fr}
       .kpi-grid{grid-template-columns:1fr 1fr}
+      .testimonial-grid{grid-template-columns:1fr 1fr}
       .cta-box,
       .why-grid{
         grid-template-columns:1fr;
       }
       .cta-panel{
         margin-inline:auto;
+      }
+      .case-card{
+        min-width:calc(50% - 11px);
+      }
+      .steps-grid{
+        grid-template-columns:1fr;
       }
     }
 
@@ -679,7 +844,8 @@
       .services-grid,
       .kpi-grid,
       .footer-grid,
-      .modal-columns{
+      .modal-columns,
+      .testimonial-grid{
         grid-template-columns:1fr;
       }
       .modal-body,
@@ -700,7 +866,8 @@
       }
       .section-light,
       .section-dark,
-      .cta-band{
+      .cta-band,
+      .steps-band{
         padding:76px 0;
       }
       .service-card,
@@ -712,6 +879,12 @@
       }
       .logo-chip{
         min-width:180px;
+      }
+      .case-card{
+        min-width:100%;
+      }
+      .cases-arrow{
+        display:none;
       }
     }
   </style>
@@ -944,10 +1117,10 @@
 
     <section class="section-dark" id="testimonios">
       <div class="container">
-        <div class="authority-head">
+        <div class="testimonials-head">
           <div class="eyebrow">Alcance y trayectoria</div>
-          <h2>Empresas e instituciones que ya confiaron en nuestro trabajo.</h2>
-          <p>La mejor forma de vender una productora es mostrar que ya estuvo a la altura de distintos contextos, formatos y organizaciones. La experiencia genera confianza antes de la primera reunión.</p>
+          <h2>Testimonios y señales de confianza que respaldan nuestro trabajo.</h2>
+          <p>La confianza no se construye solo con lo que decimos. También se construye con la experiencia acumulada, con las empresas que ya nos eligieron y con la manera en que resolvemos cada evento.</p>
         </div>
 
         <div class="kpi-grid">
@@ -1000,6 +1173,90 @@
             <div class="logo-chip">Casa Magnoni SRL</div>
           </div>
         </div>
+
+        <div class="testimonial-grid">
+          <article class="testimonial-card">
+            <p>“Se nota cuando un evento está pensado de verdad. La coordinación, la presencia del equipo y la manera en que todo fluye generan tranquilidad.”</p>
+            <strong>Cliente corporativo</strong>
+            <span>Evento institucional</span>
+          </article>
+
+          <article class="testimonial-card">
+            <p>“Trabajar con una sola dirección resolvió mucho. No tuvimos que estar detrás de cada proveedor ni apagando incendios durante la jornada.”</p>
+            <strong>Organización empresarial</strong>
+            <span>Encuentro corporativo</span>
+          </article>
+
+          <article class="testimonial-card">
+            <p>“La diferencia estuvo en el nivel de resolución. El evento se vio prolijo, bien montado y coherente con la imagen que queríamos transmitir.”</p>
+            <strong>Cliente institucional</strong>
+            <span>Presentación y recepción</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light" id="casos">
+      <div class="container">
+        <div class="services-head">
+          <h2>Casos reales y escenas que elevan la percepción del evento.</h2>
+          <p>Una imagen bien elegida no solo muestra lo que hacés. Le permite al cliente imaginar su propio evento resuelto, ordenado y con nivel. Acá podés mostrar montajes, pantallas, catering, ambientación y momentos de ejecución real.</p>
+        </div>
+
+        <div class="cases-slider">
+          <button class="cases-arrow cases-arrow-left" id="casesPrev" aria-label="Anterior">‹</button>
+
+          <div class="cases-track-wrap">
+            <div class="cases-track" id="casesTrack">
+              <article class="case-card">
+                <img src="assets/salon.webp" alt="Caso real salón y ambientación">
+                <div class="case-overlay">
+                  <span>Caso real</span>
+                  <h3>Salón y ambientación</h3>
+                  <p>Montajes visuales que ordenan la experiencia y elevan la presencia del evento.</p>
+                </div>
+              </article>
+
+              <article class="case-card">
+                <img src="assets/audiovisual.webp" alt="Caso real pantallas y técnica">
+                <div class="case-overlay">
+                  <span>Caso real</span>
+                  <h3>Pantallas y técnica</h3>
+                  <p>Puesta audiovisual para generar impacto visual, foco y recordación de marca.</p>
+                </div>
+              </article>
+
+              <article class="case-card">
+                <img src="assets/catering.webp" alt="Caso real catering corporativo">
+                <div class="case-overlay">
+                  <span>Caso real</span>
+                  <h3>Catering corporativo</h3>
+                  <p>Finger food y propuestas gastronómicas que acompañan la experiencia con nivel.</p>
+                </div>
+              </article>
+
+              <article class="case-card">
+                <img src="assets/produccion-integral.webp" alt="Caso real producción integral">
+                <div class="case-overlay">
+                  <span>Caso real</span>
+                  <h3>Producción integral</h3>
+                  <p>Eventos con dirección clara, tiempos ordenados y ejecución profesional de punta a punta.</p>
+                </div>
+              </article>
+
+              <article class="case-card">
+                <img src="assets/equipos.webp" alt="Caso real logística y montaje">
+                <div class="case-overlay">
+                  <span>Caso real</span>
+                  <h3>Logística y montaje</h3>
+                  <p>El detrás de escena bien resuelto es lo que permite que todo se vea impecable.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <button class="cases-arrow cases-arrow-right" id="casesNext" aria-label="Siguiente">›</button>
+        </div>
       </div>
     </section>
 
@@ -1015,10 +1272,45 @@
           <h3>Contacto</h3>
           <div class="contact-list">
             <div class="contact-item"><strong>WhatsApp:</strong> 2993 32-3042</div>
+            <div class="contact-item"><strong>Teléfono:</strong> 299 5244039</div>
             <div class="contact-item"><strong>Email:</strong> info@aliciaojedaeventos.ar</div>
             <div class="contact-item"><strong>Ubicación:</strong> Neuquén Capital, Argentina</div>
           </div>
           <a class="cta" href="https://wa.me/542993323042" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps-band">
+      <div class="container">
+        <div class="steps-head">
+          <div class="eyebrow">Pedí propuesta en 3 pasos</div>
+          <h2>Hacerlo simple también es parte de vender bien.</h2>
+          <p>La idea es que quien entre a la web entienda rápido qué tiene que hacer, qué le vas a pedir y qué va a recibir. Eso baja fricción y mejora la conversión.</p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <h3>Nos contás el evento</h3>
+            <p>Tipo de encuentro, fecha estimada, cantidad de invitados y qué nivel de resolución necesitás.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <h3>Te ordenamos la propuesta</h3>
+            <p>Armamos una respuesta clara con los servicios que hacen falta, el enfoque general y la lógica del evento.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <h3>Ejecutamos con dirección</h3>
+            <p>Una vez aprobado, coordinamos proveedores, tiempos, montaje y experiencia para que el evento se vea profesional.</p>
+          </article>
+        </div>
+
+        <div style="display:flex;justify-content:center;margin-top:32px;">
+          <a class="cta" href="https://wa.me/542993323042" target="_blank" rel="noopener">Solicitar propuesta ahora</a>
         </div>
       </div>
     </section>
@@ -1157,6 +1449,57 @@
         closeModal();
       }
     });
+
+    const casesTrack = document.getElementById('casesTrack');
+    const casesPrev = document.getElementById('casesPrev');
+    const casesNext = document.getElementById('casesNext');
+
+    if (casesTrack && casesPrev && casesNext) {
+      let currentIndex = 0;
+
+      function getVisibleCards() {
+        if (window.innerWidth <= 700) return 1;
+        if (window.innerWidth <= 1100) return 2;
+        return 3;
+      }
+
+      function updateSlider() {
+        const cards = casesTrack.querySelectorAll('.case-card');
+        const visible = getVisibleCards();
+        const maxIndex = Math.max(0, cards.length - visible);
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+        const cardWidth = cards[0].offsetWidth + 22;
+        casesTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+      }
+
+      casesNext.addEventListener('click', () => {
+        const cards = casesTrack.querySelectorAll('.case-card');
+        const visible = getVisibleCards();
+        const maxIndex = Math.max(0, cards.length - visible);
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+        } else {
+          currentIndex = 0;
+        }
+        updateSlider();
+      });
+
+      casesPrev.addEventListener('click', () => {
+        const cards = casesTrack.querySelectorAll('.case-card');
+        const visible = getVisibleCards();
+        const maxIndex = Math.max(0, cards.length - visible);
+        if (currentIndex > 0) {
+          currentIndex--;
+        } else {
+          currentIndex = maxIndex;
+        }
+        updateSlider();
+      });
+
+      window.addEventListener('resize', updateSlider);
+      window.addEventListener('load', updateSlider);
+    }
   </script>
 </body>
 </html>
