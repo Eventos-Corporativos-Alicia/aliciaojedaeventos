@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ECA Eventos Corporativos</title>
-  <meta name="description" content="Producción integral de eventos corporativos e institucionales en Neuquén." />
-  <link rel="icon" href="LOGO.png" type="image/png" />
+  <meta name="description" content="Producción integral de eventos corporativos e institucionales en Neuquén. ECA organiza, coordina y ejecuta eventos con logística, catering, técnica, personal y puesta profesional." />
+  <link rel="icon" href="assets/logo-eca.jpeg" type="image/jpeg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +13,22 @@
 
   <style>
     :root{
-      --bg:#0a0b0f;
-      --bg2:#111319;
-      --paper:#f5f3ee;
-      --text:#f6f5f1;
-      --text-dark:#181a1f;
-      --muted:#b9b6ae;
-      --muted-dark:#625d56;
+      --bg:#08090c;
+      --bg-2:#101216;
+      --paper:#f4f1eb;
+      --card:#12151b;
+      --card-2:#191d24;
+      --text:#f7f5f1;
+      --text-dark:#12151a;
+      --muted:#c8c2b8;
+      --muted-dark:#6b655d;
       --gold:#d6a545;
-      --gold2:#b67d25;
+      --gold-2:#b77d24;
       --line:rgba(255,255,255,.08);
+      --line-dark:rgba(0,0,0,.08);
       --shadow:0 24px 60px rgba(0,0,0,.28);
       --max:1240px;
+      --radius:28px;
     }
 
     *{box-sizing:border-box}
@@ -38,43 +42,72 @@
       text-rendering:optimizeLegibility;
     }
 
+    body.modal-open{overflow:hidden}
+
     img{display:block;max-width:100%}
     a{text-decoration:none;color:inherit}
+    button{font:inherit}
     .container{max-width:var(--max);margin:0 auto;padding:0 24px}
 
-    h1,h2,h3{margin:0 0 14px}
+    h1,h2,h3,h4{margin:0 0 14px}
     h1{
       font-family:Manrope,Inter,sans-serif;
-      font-size:clamp(48px,7vw,86px);
+      font-size:clamp(52px,7vw,92px);
       line-height:.92;
       letter-spacing:-.05em;
       text-wrap:balance;
     }
     h2{
       font-family:Manrope,Inter,sans-serif;
-      font-size:clamp(34px,4.4vw,58px);
+      font-size:clamp(34px,4.2vw,58px);
       line-height:.98;
       letter-spacing:-.04em;
       text-wrap:balance;
     }
     h3{
-      font-size:clamp(22px,2vw,28px);
-      line-height:1.08;
-      letter-spacing:-.02em;
+      font-family:Manrope,Inter,sans-serif;
+      font-size:clamp(24px,2vw,34px);
+      line-height:1.02;
+      letter-spacing:-.03em;
       text-wrap:balance;
     }
-    p{margin:0 0 14px;line-height:1.7}
+    h4{
+      font-size:1rem;
+      font-weight:800;
+      letter-spacing:.01em;
+    }
+    p{
+      margin:0 0 14px;
+      line-height:1.7;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-transform:uppercase;
+      letter-spacing:.17em;
+      font-size:.78rem;
+      font-weight:800;
+      color:#ddd6c8;
+    }
+    .eyebrow::before{
+      content:"";
+      width:36px;
+      height:1px;
+      background:rgba(255,255,255,.28);
+    }
 
     .topbar{
       position:sticky;
       top:0;
-      z-index:50;
-      background:rgba(10,11,15,.78);
-      backdrop-filter:blur(12px);
+      z-index:70;
+      background:rgba(8,9,12,.8);
+      backdrop-filter:blur(14px);
       border-bottom:1px solid rgba(255,255,255,.05);
     }
     .topbar-inner{
-      height:78px;
+      min-height:82px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -84,21 +117,27 @@
       display:flex;
       align-items:center;
       gap:14px;
+      min-width:0;
     }
     .brand img{
-      width:42px;
-      height:42px;
+      width:104px;
+      height:auto;
       object-fit:contain;
+      flex-shrink:0;
     }
-    .brand strong{
-      display:block;
-      font-size:1rem;
+    .brand-copy{
+      display:flex;
+      flex-direction:column;
+      line-height:1.06;
+    }
+    .brand-copy strong{
+      font-size:1.05rem;
       font-weight:900;
+      color:#fff;
     }
-    .brand span{
-      display:block;
-      font-size:.84rem;
-      color:#bcb8af;
+    .brand-copy span{
+      font-size:.86rem;
+      color:#c3bdb2;
     }
 
     .nav{
@@ -113,223 +152,277 @@
     }
     .nav a:hover{color:#fff}
 
-    .cta{
+    .cta,
+    .cta-secondary,
+    .service-btn,
+    .mini-btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:14px 20px;
+      gap:10px;
+      border:0;
+      cursor:pointer;
+      text-decoration:none;
+      transition:.24s ease;
+    }
+
+    .cta{
+      padding:14px 22px;
       border-radius:999px;
       font-weight:900;
       color:#111;
-      background:linear-gradient(90deg,var(--gold),var(--gold2));
-      box-shadow:0 10px 26px rgba(182,125,37,.28);
+      background:linear-gradient(90deg,var(--gold),var(--gold-2));
+      box-shadow:0 12px 30px rgba(183,125,36,.3);
+    }
+    .cta:hover{transform:translateY(-1px)}
+
+    .cta-secondary{
+      padding:14px 22px;
+      border-radius:999px;
+      font-weight:800;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.02);
     }
 
     .hero{
-      min-height:92vh;
+      min-height:95vh;
       position:relative;
+      overflow:hidden;
       display:grid;
       align-items:end;
-      overflow:hidden;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55)),
-        radial-gradient(700px 320px at 70% 20%, rgba(214,165,69,.18), transparent 60%),
-        url('hero-evento.webp') center/cover no-repeat,
-        linear-gradient(180deg,#12141b,#090a0d);
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.56)),
+        radial-gradient(760px 340px at 72% 20%, rgba(214,165,69,.14), transparent 60%),
+        url('assets/portada.webp') center/cover no-repeat,
+        linear-gradient(180deg,#14171f,#090a0d);
     }
     .hero::before{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.48));
+      background:linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.54));
     }
     .hero-content{
       position:relative;
       z-index:1;
-      padding:110px 0 78px;
       text-align:center;
-    }
-    .hero-kicker{
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      color:#d8d4cb;
-      font-size:.82rem;
-      font-weight:800;
-      margin-bottom:16px;
+      padding:118px 0 86px;
     }
     .hero h1{
-      max-width:12ch;
-      margin:0 auto 18px;
+      max-width:11.4ch;
+      margin:18px auto 18px;
     }
     .hero p{
-      max-width:720px;
-      margin:0 auto 24px;
-      color:#ddd8cf;
+      max-width:850px;
+      margin:0 auto 26px;
+      color:#e4ddd1;
       font-size:1.08rem;
     }
     .hero-actions{
       display:flex;
-      gap:12px;
-      justify-content:center;
       flex-wrap:wrap;
+      justify-content:center;
+      gap:12px;
+      margin-bottom:30px;
     }
-    .cta-ghost{
-      background:transparent;
-      color:#fff;
-      border:1px solid rgba(255,255,255,.16);
-      box-shadow:none;
+    .hero-proof{
+      display:flex;
+      justify-content:center;
+      gap:28px;
+      flex-wrap:wrap;
+      color:#d4cec3;
+      font-size:.96rem;
+      font-weight:700;
+    }
+    .hero-proof span{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .hero-proof span::before{
+      content:"•";
+      color:var(--gold);
+      font-size:1rem;
     }
 
-    .section-white{
+    .section-light{
       background:var(--paper);
       color:var(--text-dark);
-      padding:96px 0;
+      padding:92px 0;
     }
-    .intro-center{
-      text-align:center;
+    .section-dark{
+      background:#090b10;
+      color:#fff;
+      padding:92px 0;
+    }
+
+    .intro{
       max-width:980px;
       margin:0 auto;
+      text-align:center;
     }
-    .intro-center h2{
-      margin-bottom:14px;
-    }
-    .intro-mini{
+    .intro .mini{
       text-transform:uppercase;
       letter-spacing:.18em;
-      font-size:.9rem;
-      color:#70695f;
+      font-size:.84rem;
+      color:#746e65;
       font-weight:800;
-      margin-bottom:18px;
+      margin:18px 0 14px;
     }
-    .intro-center p{
-      max-width:900px;
+    .intro p{
+      max-width:880px;
       margin:0 auto 14px;
       color:#645f58;
       font-size:1.05rem;
     }
 
-    .categories-band{
-      background:#121316;
-      padding:44px 0;
-    }
-    .categories-grid{
+    .pain-grid{
       display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
+      grid-template-columns:repeat(3,minmax(0,1fr));
       gap:22px;
+      margin-top:42px;
     }
-    .category-box{
-      aspect-ratio:1.12/1;
-      border-radius:0;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,0)),
-        linear-gradient(135deg, #b9357b, #7d1fd0 70%, #5a21c7);
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:20px;
-      color:#fff;
-      font-family:Manrope,Inter,sans-serif;
-      font-size:clamp(22px,2vw,34px);
-      line-height:1.02;
-      letter-spacing:-.03em;
-      font-weight:800;
+    .pain-card{
+      background:#ece7e0;
+      border:1px solid rgba(0,0,0,.04);
+      border-radius:24px;
+      padding:26px;
+      box-shadow:0 10px 28px rgba(0,0,0,.04);
     }
-
-    .services-section{
-      background:var(--paper);
-      color:var(--text-dark);
-      padding:70px 0 90px;
-    }
-    .services-grid{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:24px;
-    }
-    .service-card{
-      background:#ece8e3;
-      border-radius:28px;
-      padding:28px;
-      box-shadow:0 10px 30px rgba(0,0,0,.05);
-    }
-    .service-image{
-      width:100%;
-      aspect-ratio:1.12/0.78;
-      border-radius:0;
-      overflow:hidden;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.35)),
-        linear-gradient(135deg,#2e3150,#151822);
-      margin-bottom:22px;
-    }
-    .service-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-    .service-card h3{
-      font-size:clamp(26px,2vw,34px);
+    .pain-card h3{
+      font-size:1.42rem;
       margin-bottom:8px;
     }
-    .service-sub{
-      font-style:italic;
-      color:#3e3a34;
-      margin-bottom:16px;
-      display:block;
-    }
-    .service-card p{
-      color:#58534c;
+    .pain-card p{
+      color:#5f5951;
       margin:0;
     }
 
-    .gallery-section{
-      background:var(--paper);
-      padding:0 0 80px;
+    .why-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:start;
+      margin-top:34px;
     }
-    .gallery-grid{
+    .why-copy p{
+      color:#d3ccc0;
+    }
+    .why-list{
+      display:grid;
+      gap:14px;
+    }
+    .why-item{
+      padding:18px 18px 18px 20px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      color:#ebe6dd;
+    }
+    .why-item strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:1rem;
+    }
+
+    .services-head{
+      text-align:center;
+      max-width:920px;
+      margin:0 auto 40px;
+    }
+    .services-head p{
+      max-width:760px;
+      margin:0 auto;
+      color:#635d56;
+    }
+
+    .services-grid{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:10px;
+      gap:24px;
     }
-    .gallery-item{
-      min-height:240px;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.28)),
-        linear-gradient(135deg,#2d3143,#181b23);
+    .service-card{
+      position:relative;
+      border:0;
+      padding:0;
+      background:none;
+      text-align:left;
+      cursor:pointer;
+      border-radius:30px;
       overflow:hidden;
+      box-shadow:0 18px 45px rgba(0,0,0,.12);
+      min-height:440px;
+      isolation:isolate;
     }
-    .gallery-item img{
+    .service-card img{
+      position:absolute;
+      inset:0;
       width:100%;
       height:100%;
       object-fit:cover;
-      display:block;
+      z-index:0;
+      transition:transform .45s ease;
+    }
+    .service-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.05) 10%, rgba(0,0,0,.78) 100%);
+    }
+    .service-card:hover img{
+      transform:scale(1.04);
+    }
+    .service-content{
+      position:relative;
+      z-index:2;
+      min-height:440px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:26px;
+      color:#fff;
+    }
+    .service-content h3{
+      font-size:clamp(30px,2vw,42px);
+      margin-bottom:10px;
+    }
+    .service-content p{
+      color:#f0ebe2;
+      margin-bottom:18px;
+      max-width:28ch;
+    }
+    .service-btn{
+      align-self:flex-start;
+      padding:12px 16px;
+      border-radius:999px;
+      color:#fff;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.16);
+      font-weight:800;
+    }
+    .service-btn:hover{
+      background:rgba(255,255,255,.13);
     }
 
-    .authority-section{
-      background:#050608;
-      color:#fff;
-      padding:96px 0;
-    }
     .authority-head{
       text-align:center;
-      max-width:940px;
+      max-width:920px;
       margin:0 auto 34px;
     }
-    .authority-head .mini{
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      font-size:.82rem;
-      color:var(--gold);
-      font-weight:800;
-      margin-bottom:14px;
+    .authority-head p{
+      color:#d2ccc0;
+      max-width:760px;
+      margin:0 auto;
     }
     .kpi-grid{
       display:grid;
       grid-template-columns:repeat(4,minmax(0,1fr));
       gap:18px;
-      margin-bottom:34px;
+      margin-top:34px;
+      margin-bottom:32px;
     }
     .kpi{
       background:rgba(255,255,255,.03);
@@ -341,15 +434,15 @@
     .kpi strong{
       display:block;
       font-family:Manrope,Inter,sans-serif;
-      font-size:clamp(28px,3vw,42px);
+      font-size:clamp(28px,3vw,44px);
       margin-bottom:8px;
       letter-spacing:-.03em;
     }
     .kpi span{
-      color:#d2cec6;
-      font-weight:600;
-      line-height:1.55;
+      color:#d0c9be;
       display:block;
+      line-height:1.55;
+      font-weight:600;
     }
 
     .logo-marquee{
@@ -361,7 +454,7 @@
     .logo-track{
       display:flex;
       width:max-content;
-      gap:18px;
+      gap:16px;
       animation:scrollLogos 34s linear infinite;
     }
     .logo-chip{
@@ -370,7 +463,7 @@
       border-radius:18px;
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.08);
-      color:#f2eee7;
+      color:#f4efe7;
       text-align:center;
       font-weight:800;
       white-space:nowrap;
@@ -382,11 +475,11 @@
 
     .cta-band{
       background:
-        radial-gradient(480px 240px at 20% 50%, rgba(214,165,69,.12), transparent 60%),
-        linear-gradient(180deg,#0e1015,#0a0b0d);
+        radial-gradient(500px 240px at 20% 50%, rgba(214,165,69,.14), transparent 60%),
+        linear-gradient(180deg,#0f1218,#090a0d);
       border-top:1px solid rgba(255,255,255,.06);
       border-bottom:1px solid rgba(255,255,255,.06);
-      padding:80px 0;
+      padding:82px 0;
     }
     .cta-box{
       display:grid;
@@ -394,21 +487,19 @@
       gap:30px;
       align-items:center;
     }
-    .cta-copy h2{max-width:12ch}
     .cta-copy p{
       max-width:54ch;
-      color:#cbc7be;
+      color:#cdc7bc;
     }
-
     .cta-panel{
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.08);
       border-radius:28px;
       padding:28px;
       box-shadow:var(--shadow);
-      max-width:540px;
-      margin-left:auto;
       width:100%;
+      max-width:560px;
+      margin-left:auto;
     }
     .contact-list{
       display:grid;
@@ -441,35 +532,187 @@
       margin-bottom:12px;
     }
     .footer-logo img{
-      width:34px;
-      height:34px;
+      width:72px;
+      height:auto;
       object-fit:contain;
+    }
+    .footer-grid p,
+    .footer-grid a{
+      color:#cfc9bf;
     }
     .legal{
       padding:0 0 28px;
-      color:#918d84;
+      color:#928d84;
       font-size:.92rem;
     }
 
-    @media (max-width:1100px){
-      .hero-content{padding:100px 0 70px}
-      .categories-grid,.services-grid,.kpi-grid{grid-template-columns:1fr 1fr}
-      .cta-box{grid-template-columns:1fr}
-      .cta-panel{margin-inline:auto}
+    .modal{
+      position:fixed;
+      inset:0;
+      z-index:120;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+      background:rgba(3,4,7,.72);
+      backdrop-filter:blur(12px);
     }
+    .modal.is-open{display:flex}
+    .modal-dialog{
+      width:min(1120px,100%);
+      max-height:min(90vh,900px);
+      overflow:auto;
+      background:#f5f1ea;
+      color:#16191f;
+      border-radius:30px;
+      box-shadow:0 30px 70px rgba(0,0,0,.38);
+      position:relative;
+    }
+    .modal-close{
+      position:absolute;
+      top:18px;
+      right:18px;
+      width:46px;
+      height:46px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.08);
+      background:rgba(255,255,255,.92);
+      color:#111;
+      font-size:1.3rem;
+      font-weight:800;
+      cursor:pointer;
+      z-index:3;
+    }
+    .modal-media{
+      position:relative;
+      min-height:340px;
+      overflow:hidden;
+      border-radius:30px 30px 0 0;
+    }
+    .modal-media img{
+      width:100%;
+      height:100%;
+      min-height:340px;
+      object-fit:cover;
+    }
+    .modal-media::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.42));
+    }
+    .modal-hero{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:2;
+      padding:28px 30px 30px;
+      color:#fff;
+    }
+    .modal-hero h3{
+      font-size:clamp(36px,3vw,54px);
+      margin-bottom:8px;
+    }
+    .modal-hero p{
+      margin:0;
+      color:#f0ebe2;
+      max-width:60ch;
+    }
+    .modal-body{
+      padding:34px 30px 34px;
+    }
+    .modal-intro{
+      max-width:860px;
+      margin:0 auto 28px;
+      text-align:center;
+    }
+    .modal-intro p{
+      color:#4f4942;
+      font-size:1.08rem;
+    }
+    .modal-columns{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:34px;
+      background:#ede8e1;
+      border-radius:24px;
+      padding:30px;
+    }
+    .modal-columns h4{
+      font-family:Manrope,Inter,sans-serif;
+      font-size:clamp(22px,2vw,30px);
+      margin-bottom:14px;
+      letter-spacing:-.03em;
+    }
+    .modal-columns p{
+      color:#514b43;
+      margin-bottom:18px;
+    }
+    .mini-btn{
+      padding:13px 18px;
+      border-radius:999px;
+      font-weight:900;
+      color:#111;
+      background:linear-gradient(90deg,var(--gold),var(--gold-2));
+      box-shadow:0 10px 24px rgba(183,125,36,.22);
+    }
+
+    @media (max-width:1150px){
+      .services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .pain-grid{grid-template-columns:1fr 1fr}
+      .kpi-grid{grid-template-columns:1fr 1fr}
+      .cta-box,
+      .why-grid{
+        grid-template-columns:1fr;
+      }
+      .cta-panel{
+        margin-inline:auto;
+      }
+    }
+
     @media (max-width:860px){
       .nav a:not(.cta){display:none}
-      .gallery-grid{grid-template-columns:1fr 1fr}
-      .footer-grid{grid-template-columns:1fr}
+      .brand-copy span{display:none}
+      .hero-content{padding:104px 0 78px}
+      .pain-grid,
+      .services-grid,
+      .kpi-grid,
+      .footer-grid,
+      .modal-columns{
+        grid-template-columns:1fr;
+      }
+      .modal-body,
+      .modal-hero{
+        padding-left:20px;
+        padding-right:20px;
+      }
+      .modal-columns{padding:22px}
     }
+
     @media (max-width:700px){
       .container{padding:0 18px}
-      .topbar-inner{height:72px}
-      .brand span{display:none}
-      .section-white,.services-section,.authority-section,.cta-band{padding:76px 0}
-      .categories-grid,.services-grid,.gallery-grid,.kpi-grid{grid-template-columns:1fr}
-      .hero h1{max-width:none}
-      .logo-chip{min-width:180px}
+      .topbar-inner{min-height:74px}
+      .brand img{width:82px}
+      .hero-actions,
+      .hero-proof{
+        gap:10px;
+      }
+      .section-light,
+      .section-dark,
+      .cta-band{
+        padding:76px 0;
+      }
+      .service-card,
+      .service-content{
+        min-height:380px;
+      }
+      .service-content h3{
+        font-size:2rem;
+      }
+      .logo-chip{
+        min-width:180px;
+      }
     }
   </style>
 </head>
@@ -478,15 +721,15 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="#inicio" aria-label="Inicio">
-        <img src="LOGO.png" alt="ECA Eventos Corporativos">
-        <div>
+        <img src="assets/logo-eca.jpeg" alt="ECA Eventos Corporativos">
+        <div class="brand-copy">
           <strong>ECA Eventos Corporativos</strong>
-          <span>Producción integral de eventos</span>
+          <span>Producción integral de eventos corporativos</span>
         </div>
       </a>
 
       <nav class="nav" aria-label="Principal">
-        <a href="#espacios">Espacios</a>
+        <a href="#propuesta">Propuesta</a>
         <a href="#servicios">Servicios</a>
         <a href="#autoridad">Autoridad</a>
         <a href="#contacto">Contacto</a>
@@ -496,106 +739,237 @@
   </header>
 
   <main>
+
     <section class="hero" id="inicio">
       <div class="container hero-content">
-        <div class="hero-kicker">Producción de eventos corporativos e institucionales</div>
-        <h1>Tu evento brillará con una producción bien resuelta.</h1>
-        <p>Organizamos eventos empresariales de distinta magnitud, coordinando proveedores, logística, montaje y ejecución general para que cada encuentro exprese orden, presencia y profesionalismo.</p>
+        <div class="eyebrow">Producción corporativa con orden y presencia</div>
+        <h1>Tu evento no necesita improvisación. Necesita dirección.</h1>
+        <p>En ECA organizamos eventos empresariales, institucionales y corporativos con una lógica clara: ordenar cada detalle, cuidar la imagen de tu organización y ejecutar una experiencia que se vea profesional de principio a fin.</p>
         <div class="hero-actions">
-          <a class="cta" href="https://wa.me/542993323042" target="_blank" rel="noopener">Pedir propuesta</a>
-          <a class="cta cta-ghost" href="#autoridad">Ver trayectoria</a>
+          <a class="cta" href="https://wa.me/542993323042" target="_blank" rel="noopener">Quiero una propuesta</a>
+          <a class="cta-secondary" href="#servicios">Ver servicios</a>
+        </div>
+        <div class="hero-proof">
+          <span>Producción integral</span>
+          <span>Logística y montaje</span>
+          <span>Catering, técnica y personal</span>
         </div>
       </div>
     </section>
 
-    <section class="section-white">
-      <div class="container intro-center">
-        <h2>Tu evento brillará</h2>
-        <div class="intro-mini">Eventos empresariales, institucionales y encuentros corporativos</div>
-        <p>ECA brinda producción integral para eventos empresariales, institucionales y organizacionales, articulando logística, proveedores, ambientación, equipamiento y ejecución general.</p>
-        <p>Nuestro objetivo es que cada evento funcione con orden, presencia y una experiencia alineada a la imagen que la organización necesita transmitir.</p>
+    <section class="section-light" id="propuesta">
+      <div class="container">
+        <div class="intro">
+          <h2>Tu evento brillará cuando todo esté bien resuelto.</h2>
+          <div class="mini">Eventos corporativos, institucionales y empresariales</div>
+          <p>No se trata solo de montar un salón o contratar proveedores. Se trata de que cada parte del evento responda a una misma dirección, transmita profesionalismo y le dé respaldo a la imagen de tu empresa.</p>
+          <p>ECA coordina producción, técnica, catering, ambientación, logística y personal para que el evento deje una impresión sólida, organizada y alineada a lo que tu organización quiere comunicar.</p>
+        </div>
+
+        <div class="pain-grid">
+          <article class="pain-card">
+            <h3>Menos desorden</h3>
+            <p>Cuando nadie centraliza, aparecen retrasos, descoordinación entre proveedores y decisiones de último momento que se notan.</p>
+          </article>
+          <article class="pain-card">
+            <h3>Más presencia</h3>
+            <p>Un evento bien producido mejora la percepción de tu marca, transmite seriedad y eleva la experiencia del invitado.</p>
+          </article>
+          <article class="pain-card">
+            <h3>Más tranquilidad</h3>
+            <p>Vos necesitás enfocarte en el objetivo del encuentro. Nosotros en que todo funcione con criterio, orden y ejecución profesional.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="categories-band" id="espacios">
-      <div class="container categories-grid">
-        <div class="category-box">Producción<br>Integral</div>
-        <div class="category-box">Logística<br>y Montaje</div>
-        <div class="category-box">Eventos<br>Empresariales</div>
-        <div class="category-box">Salas y<br>Formatos</div>
+    <section class="section-dark">
+      <div class="container">
+        <div class="why-grid">
+          <div class="why-copy">
+            <div class="eyebrow">Cómo trabajamos</div>
+            <h2>Una productora que no solo arma. También piensa.</h2>
+            <p>La diferencia entre un evento correcto y un evento que realmente se recuerda suele estar en la dirección. En ECA no trabajamos desde la improvisación. Trabajamos con criterio, previsión y una ejecución pensada para empresas que necesitan verse bien y operar mejor.</p>
+            <p>Por eso cada proyecto se organiza con lógica integral: objetivo, formato, invitados, puesta, técnica, circulación, catering, ambientación y acompañamiento durante toda la jornada.</p>
+          </div>
+
+          <div class="why-list">
+            <div class="why-item">
+              <strong>Lectura integral del evento</strong>
+              Cada decisión responde a una misma idea de orden, imagen y funcionamiento.
+            </div>
+            <div class="why-item">
+              <strong>Coordinación real de proveedores</strong>
+              Unificamos técnica, montaje, catering, ambientación y personal para evitar fricciones.
+            </div>
+            <div class="why-item">
+              <strong>Ejecución profesional</strong>
+              La experiencia final tiene que sentirse resuelta, prolija y coherente con tu marca.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="services-section" id="servicios">
-      <div class="container services-grid">
-        <article class="service-card">
-          <div class="service-image"><img src="servicio-1.webp" alt="Salón"></div>
-          <h3>Salón</h3>
-          <span class="service-sub">Elegante y acogedor</span>
-          <p>Espacios pensados para congresos, presentaciones, capacitaciones, recepciones empresariales y encuentros institucionales con una puesta profesional.</p>
-        </article>
+    <section class="section-light" id="servicios">
+      <div class="container">
+        <div class="services-head">
+          <h2>Servicios que podés explorar en detalle.</h2>
+          <p>Hacé clic en cada imagen para ver información ampliada. Cada bloque abre una ficha con el mismo estilo editorial, para que la propuesta se sienta más premium y clara.</p>
+        </div>
 
-        <article class="service-card">
-          <div class="service-image"><img src="servicio-2.webp" alt="Banquetes"></div>
-          <h3>Banquetes</h3>
-          <span class="service-sub">Una propuesta cuidada</span>
-          <p>Opciones gastronómicas y servicios complementarios pensados para acompañar la experiencia del evento con coherencia y nivel.</p>
-        </article>
+        <div class="services-grid">
+          <button class="service-card"
+                  type="button"
+                  data-title="Producción integral"
+                  data-subtitle="Organización profesional de eventos"
+                  data-image="assets/produccion-integral.webp"
+                  data-intro="Organizamos eventos corporativos e institucionales desde una visión integral, alineando objetivo, formato, tiempos, proveedores y experiencia final."
+                  data-col1-title="Dirección y producción"
+                  data-col1-text="Coordinamos la estructura general del evento, contemplando necesidades técnicas, cronograma, flujo de invitados, puesta en escena y articulación entre todos los actores involucrados."
+                  data-col1-text2="Nuestra tarea no es solo resolver. Es anticipar. Por eso diseñamos una ejecución clara, con seguimiento real para que la jornada funcione con orden y presencia."
+                  data-col2-title="¿Cuándo conviene este servicio?"
+                  data-col2-text="Cuando la empresa necesita una productora que tome el control del evento y transforme múltiples tareas dispersas en una experiencia bien dirigida."
+                  data-col2-text2="Ideal para congresos, presentaciones, encuentros institucionales, aniversarios de empresa, jornadas internas y eventos con alto nivel de exposición.">
+            <img src="assets/produccion-integral.webp" alt="Producción integral">
+            <div class="service-content">
+              <h3>Producción integral</h3>
+              <p>Organización profesional de eventos.</p>
+              <span class="service-btn">Ver información</span>
+            </div>
+          </button>
 
-        <article class="service-card">
-          <div class="service-image"><img src="servicio-3.webp" alt="Equipamiento"></div>
-          <h3>Equipamiento</h3>
-          <span class="service-sub">Tecnología al servicio del evento</span>
-          <p>Coordinación de equipamiento técnico y recursos audiovisuales para que la ejecución se sostenga con calidad y profesionalismo.</p>
-        </article>
+          <button class="service-card"
+                  type="button"
+                  data-title="Catering para eventos"
+                  data-subtitle="Finger food, coffee breaks y propuestas gastronómicas con presencia"
+                  data-image="assets/catering.webp"
+                  data-intro="La gastronomía también comunica nivel. Por eso trabajamos propuestas que acompañan la experiencia general del evento y se integran con el tono, el formato y la imagen de la organización."
+                  data-col1-title="Opciones gastronómicas"
+                  data-col1-text="Desde coffee breaks ejecutivos y estaciones gastronómicas hasta finger food, recepciones y propuestas de servicio más completas, el objetivo es que la experiencia sea funcional y también estética."
+                  data-col1-text2="La presentación, el ritmo del servicio y la coherencia con el evento son parte del resultado. No se trata solo de servir comida. Se trata de elevar la experiencia del invitado."
+                  data-col2-title="¿Cuándo conviene este servicio?"
+                  data-col2-text="Cuando el evento necesita una propuesta gastronómica cuidada, profesional y alineada a un público corporativo o institucional."
+                  data-col2-text2="Ideal para lanzamientos, recepciones, encuentros de networking, jornadas empresariales, capacitaciones, presentaciones de marca y celebraciones corporativas.">
+            <img src="assets/catering.webp" alt="Catering para eventos">
+            <div class="service-content">
+              <h3>Catering para eventos</h3>
+              <p>Finger food, coffee breaks y propuestas gastronómicas con presencia.</p>
+              <span class="service-btn">Ver información</span>
+            </div>
+          </button>
 
-        <article class="service-card">
-          <div class="service-image"><img src="servicio-4.webp" alt="Formatos"></div>
-          <h3>Formatos</h3>
-          <span class="service-sub">Cada evento a medida</span>
-          <p>Diseñamos propuestas adaptadas al tipo de encuentro, cantidad de invitados, objetivo institucional y dinámica operativa.</p>
-        </article>
+          <button class="service-card"
+                  type="button"
+                  data-title="Audiovisuales y técnica"
+                  data-subtitle="Tecnología avanzada para eventos de impacto"
+                  data-image="assets/audiovisual.webp"
+                  data-intro="La técnica no está para lucirse sola. Está para potenciar el evento, sostener la experiencia y darle contundencia visual a lo que la organización quiere comunicar."
+                  data-col1-title="Iluminación, sonido y pantallas"
+                  data-col1-text="Contemplamos soluciones en sonido, iluminación, proyección, pantallas LED, visuales y soporte técnico para eventos que necesitan una puesta sólida y profesional."
+                  data-col1-text2="Cada recurso técnico se integra a la narrativa general del encuentro para generar impacto, foco visual y una experiencia más envolvente."
+                  data-col2-title="¿Cuándo conviene este servicio?"
+                  data-col2-text="Cuando el evento necesita elevar su puesta, mejorar la presencia escénica y trabajar con recursos tecnológicos que realmente sumen."
+                  data-col2-text2="Ideal para conferencias, congresos, lanzamientos, fiestas corporativas, shows empresariales, pantallas de marca y experiencias inmersivas.">
+            <img src="assets/audiovisual.webp" alt="Audiovisuales y técnica">
+            <div class="service-content">
+              <h3>Audiovisuales y técnica</h3>
+              <p>Tecnología avanzada para eventos de impacto.</p>
+              <span class="service-btn">Ver información</span>
+            </div>
+          </button>
+
+          <button class="service-card"
+                  type="button"
+                  data-title="Salones y espacios"
+                  data-subtitle="Entornos adaptados al tipo de experiencia que querés crear"
+                  data-image="assets/salon.webp"
+                  data-intro="El espacio condiciona la percepción del evento. Por eso elegimos y pensamos salones, montajes y ambientaciones que acompañen el objetivo del encuentro y refuercen su nivel."
+                  data-col1-title="Montaje y ambientación"
+                  data-col1-text="Trabajamos la configuración del espacio, la circulación, la relación entre escenario e invitados, la disposición del mobiliario y la ambientación para construir una escena coherente."
+                  data-col1-text2="Un salón bien resuelto no solo se ve mejor. También facilita el funcionamiento del evento y mejora la experiencia general de quienes participan."
+                  data-col2-title="¿Cuándo conviene este servicio?"
+                  data-col2-text="Cuando necesitás que el lugar no sea solamente un contenedor, sino parte de la propuesta y de la impresión final que se lleva el invitado."
+                  data-col2-text2="Ideal para cenas empresariales, recepciones, aniversarios, encuentros institucionales, premiaciones y experiencias con fuerte componente visual.">
+            <img src="assets/salon.webp" alt="Salones y espacios">
+            <div class="service-content">
+              <h3>Salones y espacios</h3>
+              <p>Entornos adaptados al tipo de experiencia que querés crear.</p>
+              <span class="service-btn">Ver información</span>
+            </div>
+          </button>
+
+          <button class="service-card"
+                  type="button"
+                  data-title="Logística y montaje"
+                  data-subtitle="Armado, estructura y gestión de la operación del evento"
+                  data-image="assets/equipos.webp"
+                  data-intro="Nada se ve profesional si el detrás de escena está desordenado. La logística y el montaje son la base silenciosa que permite que el evento fluya sin fricciones."
+                  data-col1-title="Armado técnico y operativo"
+                  data-col1-text="Planificamos tiempos, estructura, secuencia de armado, ubicación de recursos y coordinación del equipo para que cada parte llegue a tiempo y funcione como corresponde."
+                  data-col1-text2="El objetivo es reducir errores, evitar improvisación y sostener una ejecución prolija incluso cuando el evento tiene muchas variables en simultáneo."
+                  data-col2-title="¿Cuándo conviene este servicio?"
+                  data-col2-text="Cuando el evento tiene complejidad operativa, múltiples proveedores, requerimientos técnicos o necesidad de una supervisión real del montaje."
+                  data-col2-text2="Ideal para eventos medianos y grandes, ferias, congresos, presentaciones, fiestas corporativas y formatos que requieren estructura profesional.">
+            <img src="assets/equipos.webp" alt="Logística y montaje">
+            <div class="service-content">
+              <h3>Logística y montaje</h3>
+              <p>Armado, estructura y gestión de la operación del evento.</p>
+              <span class="service-btn">Ver información</span>
+            </div>
+          </button>
+
+          <button class="service-card"
+                  type="button"
+                  data-title="Personal y coordinación"
+                  data-subtitle="Staff para asistir, recibir y acompañar a tus invitados"
+                  data-image="assets/personal.webp"
+                  data-intro="El contacto humano también define la percepción del evento. Un equipo bien presentado, atento y correctamente coordinado mejora la experiencia desde el primer momento."
+                  data-col1-title="Recepción y acompañamiento"
+                  data-col1-text="El staff puede asistir en recepción, acreditación, orientación, coordinación de invitados y soporte durante distintas instancias del evento, siempre cuidando la imagen general."
+                  data-col1-text2="La presencia, la actitud y la claridad operativa del equipo hacen que el evento se perciba más serio, más prolijo y mejor resuelto."
+                  data-col2-title="¿Cuándo conviene este servicio?"
+                  data-col2-text="Cuando la experiencia del invitado es importante y necesitás un equipo que acompañe la dinámica del evento con profesionalismo."
+                  data-col2-text2="Ideal para recepciones empresariales, jornadas institucionales, congresos, acreditaciones, eventos con invitados especiales y formatos de atención personalizada.">
+            <img src="assets/personal.webp" alt="Personal y coordinación">
+            <div class="service-content">
+              <h3>Personal y coordinación</h3>
+              <p>Staff para asistir, recibir y acompañar a tus invitados.</p>
+              <span class="service-btn">Ver información</span>
+            </div>
+          </button>
+        </div>
       </div>
     </section>
 
-    <section class="gallery-section">
-      <div class="container gallery-grid">
-        <div class="gallery-item"><img src="galeria-1.webp" alt="Evento corporativo 1"></div>
-        <div class="gallery-item"><img src="galeria-2.webp" alt="Evento corporativo 2"></div>
-        <div class="gallery-item"><img src="galeria-3.webp" alt="Evento corporativo 3"></div>
-        <div class="gallery-item"><img src="galeria-4.webp" alt="Evento corporativo 4"></div>
-        <div class="gallery-item"><img src="galeria-5.webp" alt="Evento corporativo 5"></div>
-        <div class="gallery-item"><img src="galeria-6.webp" alt="Evento corporativo 6"></div>
-      </div>
-    </section>
-
-    <section class="authority-section" id="autoridad">
+    <section class="section-dark" id="autoridad">
       <div class="container">
         <div class="authority-head">
-          <div class="mini">Alcance y trayectoria</div>
+          <div class="eyebrow">Autoridad y trayectoria</div>
           <h2>Empresas e instituciones que ya confiaron en nuestro trabajo.</h2>
+          <p>La mejor forma de vender una productora es mostrar que ya estuvo a la altura de distintos contextos, formatos y organizaciones. La experiencia genera confianza antes de la primera reunión.</p>
         </div>
 
         <div class="kpi-grid">
           <div class="kpi">
             <strong>13+</strong>
-            <span>Empresas e instituciones mencionadas entre clientes y organizaciones atendidas.</span>
+            <span>Empresas e instituciones atendidas entre clientes, marcas y organizaciones de referencia.</span>
           </div>
           <div class="kpi">
             <strong>Integral</strong>
-            <span>Producción, logística y ejecución bajo una misma dirección profesional.</span>
+            <span>Producción, técnica, gastronomía, montaje y personal bajo una misma lógica de ejecución.</span>
           </div>
           <div class="kpi">
             <strong>Corporativo</strong>
-            <span>Experiencia orientada a eventos empresariales, institucionales y organizacionales.</span>
+            <span>Experiencia enfocada en encuentros empresariales, institucionales y organizacionales.</span>
           </div>
           <div class="kpi">
             <strong>Neuquén</strong>
-            <span>Base local con foco en empresas, entidades y organizaciones de la región.</span>
+            <span>Base local con capacidad para acompañar empresas y entidades de la región.</span>
           </div>
         </div>
 
-        <div class="logo-marquee">
+        <div class="logo-marquee" aria-label="Clientes y organizaciones">
           <div class="logo-track">
             <div class="logo-chip">Toyota Nippon</div>
             <div class="logo-chip">Iveco</div>
@@ -632,8 +1006,9 @@
     <section class="cta-band" id="contacto">
       <div class="container cta-box">
         <div class="cta-copy">
-          <h2>Pedí tu propuesta para un evento bien organizado.</h2>
-          <p>Si necesitás una productora que ordene el evento de verdad, escribinos. Te acercamos una propuesta clara, profesional y alineada a tu organización.</p>
+          <div class="eyebrow">Contacto directo</div>
+          <h2>Si necesitás un evento bien resuelto, empecemos por una propuesta clara.</h2>
+          <p>Contanos qué tipo de evento querés organizar, para cuántas personas y cuál es el objetivo. Te respondemos con una propuesta profesional, alineada al nivel de imagen que querés transmitir.</p>
         </div>
 
         <div class="cta-panel">
@@ -654,16 +1029,16 @@
     <div class="container footer-grid">
       <div>
         <div class="footer-logo">
-          <img src="LOGO.png" alt="ECA Eventos Corporativos">
+          <img src="assets/logo-eca.jpeg" alt="ECA Eventos Corporativos">
           <strong>ECA Eventos Corporativos</strong>
         </div>
-        <p>Producción integral de eventos empresariales e institucionales. Coordinación, logística, proveedores y ejecución profesional.</p>
+        <p>Producción integral de eventos corporativos e institucionales. Coordinación, logística, proveedores, técnica, catering y ejecución profesional.</p>
       </div>
 
       <div>
         <h4>Secciones</h4>
         <p><a href="#inicio">Inicio</a></p>
-        <p><a href="#espacios">Espacios</a></p>
+        <p><a href="#propuesta">Propuesta</a></p>
         <p><a href="#servicios">Servicios</a></p>
         <p><a href="#autoridad">Autoridad</a></p>
       </div>
@@ -680,5 +1055,110 @@
       © 2026 ECA Eventos Corporativos
     </div>
   </footer>
+
+  <div class="modal" id="serviceModal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">×</button>
+
+      <div class="modal-media">
+        <img id="modalImage" src="" alt="">
+        <div class="modal-hero">
+          <h3 id="modalTitle"></h3>
+          <p id="modalSubtitle"></p>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-intro">
+          <p id="modalIntro"></p>
+        </div>
+
+        <div class="modal-columns">
+          <div>
+            <h4 id="modalCol1Title"></h4>
+            <p id="modalCol1Text"></p>
+            <p id="modalCol1Text2"></p>
+          </div>
+
+          <div>
+            <h4 id="modalCol2Title"></h4>
+            <p id="modalCol2Text"></p>
+            <p id="modalCol2Text2"></p>
+            <a class="mini-btn" href="https://wa.me/542993323042" target="_blank" rel="noopener">Consultar este servicio</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('serviceModal');
+    const closeBtn = document.getElementById('modalClose');
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const modalIntro = document.getElementById('modalIntro');
+    const modalCol1Title = document.getElementById('modalCol1Title');
+    const modalCol1Text = document.getElementById('modalCol1Text');
+    const modalCol1Text2 = document.getElementById('modalCol1Text2');
+    const modalCol2Title = document.getElementById('modalCol2Title');
+    const modalCol2Text = document.getElementById('modalCol2Text');
+    const modalCol2Text2 = document.getElementById('modalCol2Text2');
+
+    function openModal(data){
+      modalImage.src = data.image;
+      modalImage.alt = data.title;
+      modalTitle.textContent = data.title;
+      modalSubtitle.textContent = data.subtitle;
+      modalIntro.textContent = data.intro;
+      modalCol1Title.textContent = data.col1Title;
+      modalCol1Text.textContent = data.col1Text;
+      modalCol1Text2.textContent = data.col1Text2;
+      modalCol2Title.textContent = data.col2Title;
+      modalCol2Text.textContent = data.col2Text;
+      modalCol2Text2.textContent = data.col2Text2;
+
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeModal(){
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+    }
+
+    serviceCards.forEach(card => {
+      card.addEventListener('click', () => {
+        openModal({
+          title: card.dataset.title,
+          subtitle: card.dataset.subtitle,
+          image: card.dataset.image,
+          intro: card.dataset.intro,
+          col1Title: card.dataset.col1Title,
+          col1Text: card.dataset.col1Text,
+          col1Text2: card.dataset.col1Text2,
+          col2Title: card.dataset.col2Title,
+          col2Text: card.dataset.col2Text,
+          col2Text2: card.dataset.col2Text2
+        });
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
