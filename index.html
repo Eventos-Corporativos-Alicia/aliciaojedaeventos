@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Eventos corporativos en Neuquén | ECA Eventos Corporativos</title>
-  <meta name="description" content="ECA Eventos Corporativos organiza y produce eventos corporativos en Neuquén. Congresos, convenciones, lanzamientos, catering, audiovisuales, logística, staff y producción integral para empresas." />
+  <meta name="description" content="ECA Eventos Corporativos organiza y produce eventos corporativos en Neuquén. Producción integral, logística, catering, audiovisuales, staff y coordinación profesional para empresas e instituciones." />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <meta name="author" content="ECA Eventos Corporativos" />
   <meta name="theme-color" content="#0b0d12" />
@@ -17,13 +17,13 @@
   <meta property="og:locale" content="es_AR" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Eventos corporativos en Neuquén | ECA Eventos Corporativos" />
-  <meta property="og:description" content="Producción integral de eventos corporativos en Neuquén. Organización, logística, catering, audiovisuales, staff y ejecución profesional para empresas." />
+  <meta property="og:description" content="Organización y producción integral de eventos corporativos en Neuquén. Logística, catering, audiovisuales, staff y ejecución profesional para empresas." />
   <meta property="og:site_name" content="ECA Eventos Corporativos" />
   <meta property="og:image" content="assets/portada.webp" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Eventos corporativos en Neuquén | ECA Eventos Corporativos" />
-  <meta name="twitter:description" content="Organización y producción integral de eventos corporativos en Neuquén para empresas e instituciones." />
+  <meta name="twitter:description" content="Producción integral de eventos corporativos en Neuquén para empresas e instituciones." />
   <meta name="twitter:image" content="assets/portada.webp" />
 
   <link rel="icon" href="assets/logo-eca.jpeg" type="image/jpeg" />
@@ -78,15 +78,15 @@
         "name":"¿Qué tipo de eventos corporativos organiza ECA?",
         "acceptedAnswer":{
           "@type":"Answer",
-          "text":"ECA organiza congresos, convenciones, kick off, lanzamientos de producto, ruedas de prensa, ferias, seminarios, talleres, acciones de teambuilding, viajes de incentivo y celebraciones empresariales."
+          "text":"ECA organiza congresos, convenciones, kick off, lanzamientos de producto, ruedas de prensa, ferias, seminarios, talleres, reuniones corporativas, teambuilding, viajes de incentivo y celebraciones empresariales."
         }
       },
       {
         "@type":"Question",
-        "name":"¿ECA trabaja solo en Neuquén Capital?",
+        "name":"¿Trabajan solo en Neuquén Capital?",
         "acceptedAnswer":{
           "@type":"Answer",
-          "text":"No. ECA tiene base en Neuquén Capital y acompaña eventos corporativos en Neuquén y la región, incluyendo otras localidades según el proyecto."
+          "text":"No. ECA tiene base en Neuquén Capital y acompaña eventos corporativos en Neuquén y la región, según el tipo de proyecto y requerimientos operativos."
         }
       },
       {
@@ -114,12 +114,12 @@
       --bg:#090b10;
       --bg-2:#11141b;
       --paper:#f4f1eb;
-      --paper-2:#ebe5dd;
-      --card:#131720;
-      --card-2:#1a1f29;
+      --paper-2:#ece6de;
+      --card:#121720;
+      --card-2:#1a202a;
       --text:#f7f5f1;
-      --text-dark:#13161d;
-      --muted:#cdc6bb;
+      --text-dark:#141820;
+      --muted:#cfc7bc;
       --muted-dark:#665f57;
       --gold:#d6a545;
       --gold-2:#b77d24;
@@ -140,8 +140,8 @@
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
-
     body.modal-open{overflow:hidden}
+
     img{display:block;max-width:100%}
     a{text-decoration:none;color:inherit}
     button{font:inherit}
@@ -200,7 +200,7 @@
       position:sticky;
       top:0;
       z-index:80;
-      background:rgba(9,11,16,.86);
+      background:rgba(9,11,16,.88);
       backdrop-filter:blur(14px);
       border-bottom:1px solid rgba(255,255,255,.05);
     }
@@ -222,6 +222,9 @@
       height:auto;
       object-fit:contain;
       flex-shrink:0;
+      background:#fff;
+      border-radius:6px;
+      padding:4px;
     }
     .brand-copy{
       display:flex;
@@ -229,7 +232,7 @@
       line-height:1.06;
     }
     .brand-copy strong{
-      font-size:1.05rem;
+      font-size:1.04rem;
       font-weight:900;
       color:#fff;
     }
@@ -590,12 +593,14 @@
       margin:0;
     }
 
-    .trajectory-head{
+    .trajectory-head,
+    .testimonials-head{
       text-align:center;
       max-width:940px;
       margin:0 auto 34px;
     }
-    .trajectory-head p{
+    .trajectory-head p,
+    .testimonials-head p{
       color:#d2ccc0;
       max-width:780px;
       margin:0 auto;
@@ -658,6 +663,84 @@
       to{transform:translateX(-50%)}
     }
 
+    .testimonials-section{
+      background:#0a0d12;
+      color:#fff;
+      padding:92px 0;
+    }
+
+    .testimonial-proof-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+      margin-top:34px;
+    }
+    .testimonial-proof-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 12px 28px rgba(0,0,0,.18);
+    }
+    .testimonial-proof-media{
+      background:#ffffff;
+      padding:16px;
+      min-height:340px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .testimonial-proof-media img{
+      width:100%;
+      height:308px;
+      object-fit:contain;
+      border-radius:12px;
+      background:#fff;
+    }
+    .testimonial-proof-body{
+      padding:18px 18px 20px;
+    }
+    .testimonial-proof-body span{
+      display:inline-block;
+      font-size:.75rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:#d8b16a;
+      margin-bottom:8px;
+    }
+    .testimonial-proof-body h3{
+      font-size:1.24rem;
+      margin-bottom:8px;
+    }
+    .testimonial-proof-body p{
+      color:#d0c9be;
+      margin:0;
+    }
+
+    .testimonial-mini-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+      margin-top:22px;
+    }
+    .testimonial-mini-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
+      padding:22px;
+    }
+    .testimonial-mini-card strong{
+      display:block;
+      font-size:1rem;
+      margin-bottom:8px;
+      color:#fff;
+    }
+    .testimonial-mini-card p{
+      color:#d0c9be;
+      margin:0;
+    }
+
     .faq-grid{
       display:grid;
       gap:14px;
@@ -680,14 +763,14 @@
     }
     .faq-item summary::-webkit-details-marker{display:none}
     .faq-item summary::after{
-      content:'+';
+      content:"+";
       position:absolute;
       right:0;
       top:18px;
       font-size:1.4rem;
       color:#5c564f;
     }
-    .faq-item[open] summary::after{content:'−'}
+    .faq-item[open] summary::after{content:"−"}
     .faq-item p{
       color:#5d5850;
       padding:0 0 18px;
@@ -807,6 +890,9 @@
       width:72px;
       height:auto;
       object-fit:contain;
+      background:#fff;
+      border-radius:6px;
+      padding:4px;
     }
     .footer-grid p,
     .footer-grid a{
@@ -937,7 +1023,9 @@
     @media (max-width:1150px){
       .icon-grid,
       .services-grid,
-      .sector-grid{
+      .sector-grid,
+      .testimonial-proof-grid,
+      .testimonial-mini-grid{
         grid-template-columns:repeat(2,minmax(0,1fr));
       }
       .kpi-grid{
@@ -964,6 +1052,8 @@
       .services-grid,
       .sector-grid,
       .kpi-grid,
+      .testimonial-proof-grid,
+      .testimonial-mini-grid,
       .footer-grid,
       .modal-columns{
         grid-template-columns:1fr;
@@ -986,6 +1076,7 @@
       .hero-proof{gap:10px}
       .section-light,
       .section-dark,
+      .testimonials-section,
       .cta-band,
       .steps-band{
         padding:76px 0;
@@ -1006,10 +1097,33 @@
       .icon-card{
         padding:24px 20px;
       }
+      .testimonial-proof-media{
+        min-height:300px;
+      }
+      .testimonial-proof-media img{
+        height:268px;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!--
+    Archivos usados:
+    assets/audiovisual.webp
+    assets/catering.webp
+    assets/equipo.webp
+    assets/logo-eca.jpeg
+    assets/montaje.webp
+    assets/portada.webp
+    assets/produccion-integral.webp
+    assets/saloones.webp
+
+    Subí también estas capturas para testimonios:
+    assets/testimonio-whatsapp-1.webp
+    assets/testimonio-google-1.webp
+    assets/testimonio-whatsapp-2.webp
+  -->
 
   <header class="topbar">
     <div class="container topbar-inner">
@@ -1026,6 +1140,7 @@
         <a href="#servicios">Servicios</a>
         <a href="#sectores">Sectores</a>
         <a href="#alcance">Alcance</a>
+        <a href="#testimonios">Testimonios</a>
         <a href="#faq">FAQ</a>
         <a href="#contacto">Contacto</a>
         <a class="cta" href="https://wa.me/542993323042" target="_blank" rel="noopener noreferrer">Solicitar propuesta</a>
@@ -1363,6 +1478,68 @@
       </div>
     </section>
 
+    <section class="testimonials-section" id="testimonios" aria-labelledby="testimonios-title">
+      <div class="container">
+        <div class="testimonials-head">
+          <div class="eyebrow">Respaldo real</div>
+          <h2 id="testimonios-title">Lo que valoran nuestros clientes después de cada evento.</h2>
+          <p>Las empresas no solo necesitan que el evento salga bien. Necesitan tranquilidad, respuesta, criterio y una ejecución profesional. Acá podés mostrar capturas reales de agradecimientos por WhatsApp y reseñas de Google.</p>
+        </div>
+
+        <div class="testimonial-proof-grid">
+          <article class="testimonial-proof-card">
+            <div class="testimonial-proof-media">
+              <img src="assets/testimonio-whatsapp-1.webp" alt="Captura de agradecimiento por WhatsApp de un cliente de ECA Eventos Corporativos" loading="lazy" />
+            </div>
+            <div class="testimonial-proof-body">
+              <span>WhatsApp</span>
+              <h3>Agradecimiento post evento</h3>
+              <p>Mensaje real recibido después de una producción corporativa bien resuelta.</p>
+            </div>
+          </article>
+
+          <article class="testimonial-proof-card">
+            <div class="testimonial-proof-media">
+              <img src="assets/testimonio-google-1.webp" alt="Reseña positiva en Google sobre ECA Eventos Corporativos" loading="lazy" />
+            </div>
+            <div class="testimonial-proof-body">
+              <span>Google</span>
+              <h3>Reseña pública verificable</h3>
+              <p>Opinión real que refuerza profesionalismo, cumplimiento y buena experiencia.</p>
+            </div>
+          </article>
+
+          <article class="testimonial-proof-card">
+            <div class="testimonial-proof-media">
+              <img src="assets/testimonio-whatsapp-2.webp" alt="Captura de cliente agradeciendo la organización integral de un evento empresarial" loading="lazy" />
+            </div>
+            <div class="testimonial-proof-body">
+              <span>Cliente</span>
+              <h3>Respuesta y acompañamiento</h3>
+              <p>Prueba social real para reforzar credibilidad, confianza y conversión.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="testimonial-mini-grid">
+          <article class="testimonial-mini-card">
+            <strong>Generan confianza inmediata</strong>
+            <p>Una captura real transmite mucho más que un testimonio genérico escrito sin contexto.</p>
+          </article>
+
+          <article class="testimonial-mini-card">
+            <strong>Refuerzan profesionalismo</strong>
+            <p>Sirven para mostrar que no solo organizás eventos: también resolvés y acompañás bien.</p>
+          </article>
+
+          <article class="testimonial-mini-card">
+            <strong>Ayudan a convertir</strong>
+            <p>Acercan al visitante a la acción de escribir por WhatsApp para pedir una propuesta.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section-light" id="faq" aria-labelledby="faq-title">
       <div class="container">
         <div class="services-head">
@@ -1471,6 +1648,7 @@
         <p><a href="#servicios">Servicios</a></p>
         <p><a href="#sectores">Sectores</a></p>
         <p><a href="#alcance">Alcance</a></p>
+        <p><a href="#testimonios">Testimonios</a></p>
         <p><a href="#faq">FAQ</a></p>
         <p><a href="#contacto">Contacto</a></p>
       </div>
