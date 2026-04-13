@@ -948,41 +948,80 @@
       color:#d8d1c6;
       margin:0;
     }
+footer{
+  background:#090a0d;
+  color:#d7d3ca;
+  border-top:1px solid rgba(255,255,255,.06);
+}
 
-    footer{
-      background:#090a0d;
-      color:#d7d3ca;
-      border-top:1px solid rgba(255,255,255,.06);
-    }
-    .footer-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr .9fr;
-      gap:24px;
-      padding:34px 0;
-    }
-    .footer-logo{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:12px;
-    }
-    .footer-logo img{
-      width:72px;
-      height:auto;
-      object-fit:contain;
-      background:#fff;
-      border-radius:6px;
-      padding:4px;
-    }
-    .footer-grid p,
-    .footer-grid a{
-      color:#cfc9bf;
-    }
-    .legal{
-      padding:0 0 28px;
-      color:#928d84;
-      font-size:.92rem;
-    }
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.3fr .9fr .9fr;
+  gap:40px;
+  padding:34px 0;
+  align-items:start;
+}
+
+.footer-logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.footer-logo img{
+  width:72px;
+  height:auto;
+  object-fit:contain;
+  background:#fff;
+  border-radius:6px;
+  padding:4px;
+}
+
+.footer-grid h4{
+  margin-bottom:16px;
+}
+
+.footer-grid p,
+.footer-grid a{
+  color:#cfc9bf;
+}
+
+.footer-links-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px 28px;
+}
+
+.footer-links-grid a{
+  display:block;
+  line-height:1.4;
+}
+
+.legal{
+  padding:0 0 28px;
+  color:#928d84;
+  font-size:.92rem;
+}
+
+@media (max-width:860px){
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+
+  .footer-links-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media (max-width:520px){
+  .footer-links-grid{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+}
+    
 
     .modal{
       position:fixed;
@@ -1857,14 +1896,16 @@
 
     <div>
       <h4>Secciones</h4>
-      <p><a href="#inicio">Inicio</a></p>
-      <p><a href="#propuesta">Propuesta</a></p>
-      <p><a href="#servicios">Servicios</a></p>
-      <p><a href="#sectores">Sectores</a></p>
-      <p><a href="#alcance">Alcance</a></p>
-      <p><a href="#testimonios">Testimonios</a></p>
-      <p><a href="#faq">FAQ</a></p>
-      <p><a href="#contacto">Contacto</a></p>
+      <div class="footer-links-grid">
+        <a href="#inicio">Inicio</a>
+        <a href="#propuesta">Propuesta</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#sectores">Sectores</a>
+        <a href="#alcance">Alcance</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </div>
     </div>
 
     <div>
