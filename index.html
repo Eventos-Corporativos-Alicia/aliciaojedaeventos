@@ -833,6 +833,50 @@
       color:#ece8df;
     }
 
+
+    .qr-contact-box{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin:18px 0 22px;
+      padding:16px;
+      border-radius:20px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .qr-contact-box img{
+      width:96px;
+      height:96px;
+      background:#fff;
+      padding:8px;
+      border-radius:14px;
+      flex-shrink:0;
+      box-shadow:0 10px 24px rgba(0,0,0,.18);
+    }
+    .qr-contact-box strong{
+      display:block;
+      color:#fff;
+      font-size:1rem;
+      margin-bottom:4px;
+    }
+    .qr-contact-box span{
+      display:block;
+      color:#d8d1c6;
+      font-size:.94rem;
+      line-height:1.45;
+    }
+
+    @media (max-width:700px){
+      .qr-contact-box{
+        flex-direction:column;
+        text-align:center;
+      }
+      .qr-contact-box img{
+        width:132px;
+        height:132px;
+      }
+    }
+
     .steps-band{
       background:
         radial-gradient(500px 240px at 20% 50%, rgba(214,165,69,.14), transparent 60%),
@@ -1753,6 +1797,15 @@
             <div class="contact-item"><strong>Email:</strong> info.ecaproductora@gmail.com</div>
             <div class="contact-item"><strong>Ubicación:</strong> Neuquén Capital, Argentina</div>
           </div>
+
+          <div class="qr-contact-box">
+            <img src="assets/qr-catering-eventos-neuquen.png" alt="QR para visitar la web de Catering y Eventos Neuquén" width="132" height="132" />
+            <div>
+              <strong>Escaneá el QR</strong>
+              <span>Conocé la propuesta completa desde tu celular.</span>
+            </div>
+          </div>
+
           <a class="cta wa-link" href="#" data-wa-message="Hola, me contacto desde la web de la productora. Necesito organizar un evento y quisiera recibir una propuesta.">Hablar por WhatsApp</a>
         </div>
       </div>
